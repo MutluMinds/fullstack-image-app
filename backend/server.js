@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+/* Routes */
 const gifsRouter = require('./routes/gifs');
 const imagesRouter = require('./routes/images');
 

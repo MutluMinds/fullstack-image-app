@@ -1,19 +1,10 @@
 const router = require('express').Router();
-const axios = require('axios');
-
-const pixabayApiKey = process.env.PIXABAY_API_KEY;
+const { getData } = require('../services/API');
 
 router.route('/').get(async (req, res) => {
-    const perPage = 5;
-    const searchTerm = 'cheeseburger';
-    const url = `https://pixabay.com/api/?key=${pixabayApiKey}&q=${searchTerm}&per_page=${perPage}`;
+    const searchTerm = 'puppy';
 
-    try {
-        const response = await axios.get(url);
-        res.json(response.data.data);
-    } catch (error) {
-        console.log(error);
-    }
+    res.json(await getData('image', 5, searchTerm));
 });
 
 module.exports = router;

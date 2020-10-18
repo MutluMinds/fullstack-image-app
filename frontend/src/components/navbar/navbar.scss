@@ -1,0 +1,23 @@
+.nav {
+    &_item {
+        color: white;
+        font-weight: bold;
+        list-style-type: none;
+        padding: 15px;
+        
+        &--active {
+            width: 30px;
+            height: 10px;
+            background-color: #DA4167;
+            margin-top: 14px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}

@@ -13,9 +13,9 @@ const SearchViewer = () => {
                 <input className="search_input" type="text" placeholder="Search..." />
             </div>
             <div className="search_gallery">
-                { mocks.map(mock => {
+                { mocks.map((mock, index) => {
                     return (
-                        <div>
+                        <div key={ index }>
                             <img className="search_gallery--image" src="https://i.giphy.com/media/3o7TKqH2b8vZ1Zu6e4/giphy.webp" alt="" />
                         </div>
                     )

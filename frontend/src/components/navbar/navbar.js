@@ -1,31 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
 } from "react-router-dom";
 
 const Navbar = () => {
-    const navItems = ['GIPHY', 'PIXABAY'];
+    const [navItems, setNavItems] = useState([
+        {
+            label: 'GIPHY',
+            id: 'giphy',
+            link: '/giphy',
+            active: true
+        },
+        {
+            label: 'PIXABAY',
+            id: 'pixabay',
+            link: '/pixabay',
+            active: false
+        }
+    ]);
+
+    const handleClick = (navItem) => {
+        if (navItem.active) {
+            return;
+        }
+
+        const updatedNavItems = navItems.map(item => {
+            item.id === navItem.id
+                ? item.active = true
+                : item.active = false
+
+            return item;
+        });
+
+        setNavItems(updatedNavItems);
+    }
 
     return (
-        <Router>
-            <div>
-                <nav>
-                    <ul>
-                        {navItems.map((navItem, index) => {
-                            return (
-                                <li key={index} className="nav_item">
-                                    <span>{ navItem }</span>
-                                    <div className="nav_item--active" />
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
-            </div>
-        </Router>
+        <div>
+            <nav>
+                <ul>
+                    {navItems.map(navItem => {
+                        return (
+                            <li
+                                key={navItem.id}
+                                className="nav_item">
+                                <div onClick={() => handleClick(navItem)}>
+                                    <Link className="nav_item--link" to={navItem.link}>{navItem.label}</Link>
+                                    <div className={navItem.active ? 'nav_item--active' : null} />
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </div>
     );
 }
 

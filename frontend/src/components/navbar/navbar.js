@@ -3,37 +3,20 @@ import {
     Link
 } from "react-router-dom";
 
-const Navbar = () => {
-    const [navItems, setNavItems] = useState([
+const Navbar = ({ onChange, value }) => {
+    const navItems = [
         {
             label: 'GIPHY',
-            id: 'giphy',
-            link: '/giphy',
-            active: true
+            link: '/gifs',
+            imageType: 'gifs'
         },
         {
             label: 'PIXABAY',
-            id: 'pixabay',
-            link: '/pixabay',
-            active: false
+            link: '/images',
+            imageType: 'images'
         }
-    ]);
-
-    const handleClick = (navItem) => {
-        if (navItem.active) {
-            return;
-        }
-
-        const updatedNavItems = navItems.map(item => {
-            item.id === navItem.id
-                ? item.active = true
-                : item.active = false
-
-            return item;
-        });
-
-        setNavItems(updatedNavItems);
-    }
+    ];
+    const handleClick = (navItem) => onChange(navItem.imageType);
 
     return (
         <div>
@@ -42,11 +25,11 @@ const Navbar = () => {
                     {navItems.map(navItem => {
                         return (
                             <li
-                                key={navItem.id}
+                                key={navItem.imageType}
                                 className="nav_item">
                                 <div onClick={() => handleClick(navItem)}>
-                                    <Link className="nav_item--link" to={navItem.link}>{navItem.label}</Link>
-                                    <div className={navItem.active ? 'nav_item--active' : null} />
+                                    <span className="nav_item--link" to={navItem.link}>{navItem.label}</span>
+                                    <div className={navItem.imageType === value ? 'nav_item--active' : null} />
                                 </div>
                             </li>
                         );

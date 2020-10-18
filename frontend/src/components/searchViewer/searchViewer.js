@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+const axios = require('axios');
 
-const SearchViewer = () => {
-    const mocks = [];
-    
-    for (let index = 0; index < 20; index++) {
-        mocks.push(index)
+const SearchViewer = ({ images, imageType }) => {
+    const searchRef = useRef();
+
+    async function handleSearch(e) {
+        e.preventDefault();
+        const searchTerm = searchRef.current.value;
+        // Will continue tomorrow
     }
 
     return (
         <>
             <div className="search_input-wrapper">
-                <input className="search_input" type="text" placeholder="Search..." />
+                <form onSubmit={ () => handleSearch }>
+                    <input 
+                        ref={searchRef}
+                        className="search_input" 
+                        type="text" 
+                        placeholder="Search..." />
+                </form>
             </div>
             <div className="search_gallery">
-                { mocks.map((mock, index) => {
+                {images.map((img, index) => {
+                    console.log(img);
                     return (
                         <div key={ index }>
-                            <img className="search_gallery--image" src="https://i.giphy.com/media/3o7TKqH2b8vZ1Zu6e4/giphy.webp" alt="" />
+                            <img 
+                                className="search_gallery--image" 
+                                src={imageType === 'gifs' ? img.images.downsized.url : img.webformatURL } alt="" />
                         </div>
                     )
                 }) }

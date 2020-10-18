@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
+import Navbar from './components/navbar/navbar';
+import SearchViewer from './components/searchViewer/searchViewer';
 
 function App() {
   return (
     <div className="App">
-      <header className="header">
-        Hello world!
+      <header>
+        <Navbar />
       </header>
+      <SearchViewer />
     </div>
   );
 }

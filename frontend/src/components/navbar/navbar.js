@@ -1,31 +1,39 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
 
-const Navbar = () => {
-    const navItems = ['GIPHY', 'PIXABAY'];
+const Navbar = ({ onChange, value }) => {
+    const navItems = [
+        {
+            label: 'GIPHY',
+            link: '/gifs',
+            imageType: 'gifs'
+        },
+        {
+            label: 'PIXABAY',
+            link: '/images',
+            imageType: 'images'
+        }
+    ];
+    const handleClick = (navItem) => onChange(navItem.imageType);
 
     return (
-        <Router>
-            <div>
-                <nav>
-                    <ul>
-                        {navItems.map((navItem, index) => {
-                            return (
-                                <li key={index} className="nav_item">
-                                    <span>{ navItem }</span>
-                                    <div className="nav_item--active" />
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
-            </div>
-        </Router>
+        <div>
+            <nav>
+                <ul>
+                    {navItems.map(navItem => {
+                        return (
+                            <li
+                                key={navItem.imageType}
+                                className="nav_item">
+                                <div onClick={() => handleClick(navItem)}>
+                                    <span className="nav_item--link" to={navItem.link}>{navItem.label}</span>
+                                    <div className={navItem.imageType === value ? 'nav_item--active' : null} />
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </div>
     );
 }
 

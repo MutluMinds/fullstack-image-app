@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const { getData } = require('../services/API');
+const { getTrendingData, getSearchedImages } = require('../services/API');
 
 router.route('/').get(async (req, res) => {
-    const searchTerm = 'puppy';
-    res.json(await getData('image', 5, searchTerm));
+    res.json(await getTrendingData('images', 15));
+});
+
+router.route('/').post(async (req, res) => {
+    const searchTerm = req.body.searchTerm;
+    res.json(await getSearchedImages('images', 15, searchTerm));
 });
 
 module.exports = router;

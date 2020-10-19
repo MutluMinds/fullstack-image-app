@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import Loading from './components/Loading/Loading';
 import Navbar from './components/Navbar/Navbar';
 import Gallery from './components/Gallery/Gallery';
 import SearchImage from './components/SearchImage/SearchImage';
@@ -12,6 +13,7 @@ function App() {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
+    setIsLoading(true);
     async function fetchData() {
       const receivedImages = await getImages(imageType);
 
@@ -32,10 +34,10 @@ function App() {
     changeSearchValue();
     setIsLoading(true);
 
-    if(searchTerm) {
+    if (searchTerm) {
       try {
-        const receivedImages = getSearchedImages(imageType, searchTerm);
-        
+        const receivedImages = await getSearchedImages(imageType, searchTerm);
+
         setImages(receivedImages);
         setIsLoading(false);
       } catch (error) {
@@ -59,11 +61,15 @@ function App() {
       <Navbar
         onChange={(value) => handleChange(value)}
         value={imageType} />
-      <SearchImage 
-        onChange={(searchTerm) => handleSearch(searchTerm)} 
-        value={inputValue} 
+      <SearchImage
+        onChange={(searchTerm) => handleSearch(searchTerm)}
+        value={inputValue || ''}
         setInputValue={setInputValue} />
-      { !isLoading && <Gallery images={images} imageType={imageType} />}
+      {
+        isLoading
+          ? <Loading />
+          : <Gallery images={images} imageType={imageType} />
+      }
     </div>
   );
 }

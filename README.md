@@ -38,6 +38,7 @@
     npm start
     ```
     
+    On another terminal:
     ```sh
     cd backend/
     npm install

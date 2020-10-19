@@ -1,24 +1,4 @@
 .search {
-    &_input {
-        width: 50%;
-        background: #2A3363;
-        border: 2px solid #5C6282;
-        border-radius: 20px;
-        color: white;
-        padding: 10px;
-        outline: none;
-
-        &-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        &::placeholder {
-            color: white;
-            font-size: 18px;
-        }
-    }
-
     &_gallery {
         margin-top: 20px;
         display: grid;

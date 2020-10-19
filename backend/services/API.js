@@ -6,25 +6,24 @@ const { apiSources } = require('../api/sources');
  * specific amount of data according to searchTerm.
 */
 async function getSearchedImages (imageType, limit, searchTerm) {
-    // const { link, key, limitString } = imageType === 'gif'
-    //     ? apiSources.giphy
-    //     : apiSources.pixabay;
+    const { link, key, limitString } = imageType === 'gif'
+        ? apiSources.giphy
+        : apiSources.pixabay;
 
-    // const searchQuery = `&q=${searchTerm}`;
-    // const limitQuery = `&${limitString}=${limit}`;
+    const searchQuery = `&q=${searchTerm}`;
+    const limitQuery = `&${limitString}=${limit}`;
+    const url = `${link}${key}${searchQuery}${limitQuery}`;
 
-    // const url = `${link}${key}${searchQuery}${limitQuery}`;
-
-    // try {
-    //     const response = await axios.get(url);
-    //     return response.data;
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    try {
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 /**
- * Gets trending gifs with limit from pixabay
+ * Gets trending gifs/images with limit
 */
 async function getTrendingData (imageType, limit) {
     const isGifType = imageType === 'gifs';

@@ -12,6 +12,17 @@
             min-height: 100%;
             object-fit: cover;
         }
+
+        &--no-image {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        &--no-image-text {
+            color: white;
+            font-size: 30px;
+        }
     }
     
     &_gallery > div {

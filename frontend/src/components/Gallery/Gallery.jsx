@@ -15,9 +15,12 @@ const SearchViewer = ({ images, imageType }) => {
                             images.map((img, index) => {
                                 return (
                                     <div key={index}>
-                                        <img
-                                            className="search_gallery--image"
-                                            src={getImgSrc(imageType, img)} />
+                                        <a href={getImgSrc(imageType, img)} target="_blank" rel="noopener noreferrer">
+                                            <img
+                                                className="search_gallery--image"
+                                                src={getImgSrc(imageType, img)}
+                                                alt="" />
+                                        </a>
                                     </div>
                                 )
                             })

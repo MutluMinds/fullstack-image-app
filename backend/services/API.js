@@ -45,7 +45,7 @@ async function getTrendingData (imageType, limit) {
         const response = await axios({
             method: 'GET',
             url,
-            timeout: reqTimeout
+            timeout: 1000 * 5
         });
         return response.data;
     } catch (error) {

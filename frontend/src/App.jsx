@@ -36,7 +36,8 @@ function App() {
 
     if (searchTerm) {
       try {
-        const receivedImages = await getSearchedImages(imageType, searchTerm);
+        const formattedSearchTerm = searchTerm.replace(/[^a-zA-Z ]/g, "");
+        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm);
 
         setImages(receivedImages);
         setIsLoading(false);

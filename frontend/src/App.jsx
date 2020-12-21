@@ -30,8 +30,8 @@ function App() {
     setImageType(value);
   }
 
-  async function handleSearch(searchTerm) {
-    changeSearchValue();
+  async function switchImagesProvider(searchTerm) {
+    setInputValue(searchTerm);
     setIsLoading(true);
 
     if (searchTerm) {
@@ -52,17 +52,13 @@ function App() {
     setIsLoading(false);
   }
 
-  function changeSearchValue(newValue) {
-    setInputValue(newValue);
-  }
-
   return (
     <div className="App">
       <Navbar
         onChange={(value) => handleChange(value)}
         value={imageType} />
       <SearchImage
-        onChange={(searchTerm) => handleSearch(searchTerm)}
+        onChange={(searchTerm) => switchImagesProvider(searchTerm)}
         value={inputValue}
         setInputValue={setInputValue} />
       {

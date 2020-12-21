@@ -18,7 +18,7 @@
 </p>
 
 ## ⚡️ Live
-  Will be deployed soon!
+  [Check it live](https://fullstack-image-app.vercel.app/)
 
 ## ✨ Quick start
 

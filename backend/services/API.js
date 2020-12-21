@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { apiSources } = require('../api/sources');
 
+const reqTimeout = 1000 * 5;
+
 /**
  * Handles axios request and returns
  * specific amount of data according to searchTerm.
@@ -15,7 +17,11 @@ async function getSearchedImages (imageType, limit, searchTerm) {
     const url = `${link}${key}${searchQuery}${limitQuery}`;
 
     try {
-        const response = await axios.get(url);
+        const response = await axios({
+            method: 'GET',
+            url,
+            timeout: reqTimeout
+        });
         return response.data;
     } catch (error) {
         console.log(error);
@@ -36,7 +42,11 @@ async function getTrendingData (imageType, limit) {
         : `${trendingLink}${key}&editors_choice=true${limitQuery}`;
 
     try {
-        const response = await axios.get(url);
+        const response = await axios({
+            method: 'GET',
+            url,
+            timeout: reqTimeout
+        });
         return response.data;
     } catch (error) {
         console.log(error);

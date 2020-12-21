@@ -33,7 +33,7 @@
     }    
 }
 
-@media (min-width: $screen-sm) {
+@media (min-width: 375px) {
   .search {
       &_gallery {
           grid-template-columns: repeat(3, 1fr);
@@ -45,7 +45,7 @@
   }
 }
 
-@media (min-width: $screen-md) {
+@media (min-width: 992px) {
   .search {
       &_gallery {
           grid-template-columns: repeat(4, 1fr);
@@ -57,7 +57,7 @@
   }
 }
 
-@media (min-width: $screen-lg) {
+@media (min-width: 1140px) {
   .search {
       &_gallery {
           grid-template-columns: repeat(5, 1fr);

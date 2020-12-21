@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import './SearchImage.scss';
 
 const SearchImage = ({ onChange, setInputValue, value }) => {
     const searchRef = useRef();

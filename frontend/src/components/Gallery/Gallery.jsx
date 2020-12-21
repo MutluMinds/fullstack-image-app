@@ -1,4 +1,5 @@
 import React from 'react';
+import './Gallery.scss';
 
 const SearchViewer = ({ images, imageType }) => {
     console.log(images)

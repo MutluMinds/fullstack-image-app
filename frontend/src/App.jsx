@@ -25,7 +25,6 @@ function App() {
   }, [imageType]);
 
   function handleChange(value) {
-    setIsLoading(true);
     setInputValue('');
     setImageType(value);
   }

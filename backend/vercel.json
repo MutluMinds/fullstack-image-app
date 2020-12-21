@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "travel-log",
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "server.js"
+    }
+  ],
+  "alias": [
+    "fullstack-image-app"
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "5000",
+    "CORS_ORIGIN": "https://fullstack-image-app.vercel.app/",
+    "GIPHY_API_KEY": "@giphy_api_key",
+    "PIXABAY_API_KEY": "@pixabay_api_key"
+  }
+}

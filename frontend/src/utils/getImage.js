@@ -1,14 +1,17 @@
 const axios = require('axios');
+const hostName = window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://fullstack-image-app-2b6j2jrqk.vercel.app'
 
 export const getImages = async (imageType) => {
-    const response = await axios.get(`http://localhost:5000/${imageType}`);
+    const response = await axios.get(`${hostName}/${imageType}`);
     const propertyName = imageType === 'gifs' ? 'data' : 'hits';
 
     return response.data[propertyName];
 }
 
 export const getSearchedImages = async (imageType, searchTerm) => {
-    const response = await axios.get(`http://localhost:5000/${imageType}/search?searchTerm=${searchTerm}`);
+    const response = await axios.get(`${hostName}/${imageType}/search?searchTerm=${searchTerm}`);
     const propertyName = imageType === 'gifs' ? 'data' : 'hits';
 
     return response.data[propertyName];

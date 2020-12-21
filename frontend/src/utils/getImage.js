@@ -8,7 +8,7 @@ export const getImages = async (imageType) => {
 }
 
 export const getSearchedImages = async (imageType, searchTerm) => {
-    const response = await axios.post(`http://localhost:5000/${imageType}`, { searchTerm });
+    const response = await axios.get(`http://localhost:5000/${imageType}/search?searchTerm=${searchTerm}`);
     const propertyName = imageType === 'gifs' ? 'data' : 'hits';
 
     return response.data[propertyName];

@@ -2,7 +2,6 @@ import React from 'react';
 import './Gallery.scss';
 
 const SearchViewer = ({ images, imageType }) => {
-    console.log(images)
     const getImgSrc = (type, img) => type === 'gifs'
         ? img && img.images && img.images.downsized.url
         : img && img.webformatURL;

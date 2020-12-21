@@ -5,8 +5,8 @@ router.route('/').get(async (req, res) => {
     res.json(await getTrendingData('gifs', 15));
 });
 
-router.route('/').post(async (req, res) => {
-    const searchTerm = req.body.searchTerm;
+router.route('/search').get(async (req, res) => {
+    const searchTerm = req.query.searchTerm;
     res.json(await getSearchedImages('gif', 15, searchTerm));
 });
 

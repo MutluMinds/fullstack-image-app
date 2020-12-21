@@ -63,7 +63,7 @@ function App() {
         value={imageType} />
       <SearchImage
         onChange={(searchTerm) => handleSearch(searchTerm)}
-        value={inputValue || ''}
+        value={inputValue}
         setInputValue={setInputValue} />
       {
         isLoading

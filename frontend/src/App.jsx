@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { Suspense,lazy,useState, useEffect } from 'react';
 import './App.scss';
-import Loading from './components/Loading/Loading';
-import Navbar from './components/Navbar/Navbar';
-import Gallery from './components/Gallery/Gallery';
-import SearchImage from './components/SearchImage/SearchImage';
-import { getImages, getSearchedImages } from './utils/getImage';
+
+const Loading = React.lazy(() => import (`./components/Loading/Loading`))
+const Navbar = React.lazy(() => import (`./components/Navbar/Navbar`))
+const Gallery = React.lazy(() => import (`./components/Gallery/Gallery`))
+const SearchImage = React.lazy(() => import (`./components/SearchImage/SearchImage`))
+const getImages = React.lazy(() => import (`./utils/getImage`))
+const getSearchedImages = React.lazy(() => import (`./utils/getImage`))
 
 function App() {
   const [imageType, setImageType] = useState('gifs');
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <Suspense fallback={<div>Loading...</div>}> 
       <Navbar
         onChange={(value) => handleChange(value)}
         value={imageType} />
@@ -67,6 +69,7 @@ function App() {
           ? <Loading />
           : <Gallery images={images} imageType={imageType} />
       }
+      </Suspense>
     </div>
   );
 }

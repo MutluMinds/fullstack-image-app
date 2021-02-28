@@ -51,7 +51,7 @@
     
     Your backend server is now running at `http://localhost:5000`!
 
-## 🧐 What's inside?
+## 🧐 What's nside?
 
     .
     ├── backend

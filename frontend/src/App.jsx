@@ -1,4 +1,4 @@
-import React, { Suspense,lazy,useState, useEffect } from 'react';
+import React, { Suspense,lazy,useState,useEffect } from 'react';
 import './App.scss';
 
 const Loading = React.lazy(() => import (`./components/Loading/Loading`))

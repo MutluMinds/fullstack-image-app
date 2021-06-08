@@ -27,8 +27,10 @@
     ```sh
     https://github.com/furkanmutlu/fullstack-image-app.git
     ```
+    
+2. Add your pixabay and giphy api keys on backend > api > sources.js
 
-2.  **Start developing.**
+3.  **Start developing.**
 
     Navigate separately into frontend and backend folders.
 

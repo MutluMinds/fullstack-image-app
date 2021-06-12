@@ -41,9 +41,10 @@ function App() {
     if (searchTerm) {
       try {
         const formattedSearchTerm = searchTerm.replace(/[^a-zA-Z ]/g, "");
-        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm);
+        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm, limit, offset);
 
         setImages(receivedImages);
+        updateOffsetValue();
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -51,13 +52,28 @@ function App() {
       return;
     }
 
-    const receivedImages = await getImages(imageType);
+    const receivedImages = await getImages(imageType, limit, offset);
 
     setImages(receivedImages);
+    updateOffsetValue();
     setIsLoading(false);
   }
 
   const loadMoreImages = async () => {
+    if (inputValue) {
+      try {
+        const formattedSearchTerm = inputValue.replace(/[^a-zA-Z ]/g, "");
+        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm, limit, offset);
+
+        setImages([...images, ...receivedImages]);
+        updateOffsetValue();
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+      return;
+    }
+
     const receivedImages = await getImages(imageType, limit, offset);
 
     setImages([...images, ...receivedImages]);

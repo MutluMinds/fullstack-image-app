@@ -10,7 +10,8 @@ const apiSources = {
         key: process.env.PIXABAY_API_KEY, // Your Pixabay API Key here
         link: 'https://pixabay.com/api/?key=',
         trendingLink: 'https://pixabay.com/api/?key=',
-        limitString: 'per_page'
+        limitString: 'per_page',
+        offsetString: 'page'
     }
 };
 

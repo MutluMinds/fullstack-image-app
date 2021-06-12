@@ -3,7 +3,9 @@ const { getTrendingData, getSearchedImages } = require('../services/API');
 
 router.route('/').get(async (req, res) => {
     try {
-        res.json(await getTrendingData('images', 25));
+        const { limit, offset } = req.query;
+
+        res.json(await getTrendingData('images', limit, offset));
     } catch (error) {
         res.status(404);
         console.log(error);

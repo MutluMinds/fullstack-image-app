@@ -12,7 +12,7 @@ function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(20);
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ function App() {
   function handleChange(value) {
     setInputValue('');
     setImageType(value);
+    setInitialOffsetValue(value);
   }
 
   async function switchImagesProvider(searchTerm) {
@@ -61,6 +62,14 @@ function App() {
 
     setImages([...images, ...receivedImages]);
     updateOffsetValue();
+  }
+
+  const setInitialOffsetValue = (value) => {
+    if (value === 'gifs') {
+      setOffset(0);
+    } else {
+      setOffset(1);
+    }
   }
 
   const updateOffsetValue = () => {

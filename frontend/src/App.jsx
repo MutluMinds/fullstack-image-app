@@ -12,16 +12,19 @@ function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [limit, setLimit] = useState(10);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
     async function fetchData() {
-      const receivedImages = await getImages(imageType);
+      const receivedImages = await getImages(imageType, limit, offset);
 
       setImages(receivedImages);
+      updateOffsetValue();
       setIsLoading(false);
-    }
-    ;
+    };
+
     fetchData();
   }, [imageType]);
 
@@ -53,6 +56,21 @@ function App() {
     setIsLoading(false);
   }
 
+  const loadMoreImages = async () => {
+    const receivedImages = await getImages(imageType, limit, offset);
+
+    setImages([...images, ...receivedImages]);
+    updateOffsetValue();
+  }
+
+  const updateOffsetValue = () => {
+    if (imageType === 'gifs') {
+      setOffset(offset + limit + 1);
+    } else {
+      setOffset(offset + 1);
+    }
+  }
+
   return (
     <div className="App">
       <Navbar
@@ -65,7 +83,7 @@ function App() {
       {
         isLoading
           ? <Loading />
-          : <Gallery images={images} imageType={imageType} />
+          : <Gallery images={images} imageType={imageType} loadMoreImages={loadMoreImages} />
       }
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Gallery.scss';
 
-const SearchViewer = ({ images, imageType }) => {
+const SearchViewer = ({ images, imageType, loadMoreImages }) => {
     const getImgSrc = (type, img) => type === 'gifs'
         ? img && img.images && img.images.downsized.url
         : img && img.webformatURL;
@@ -29,7 +29,7 @@ const SearchViewer = ({ images, imageType }) => {
                         </div>
 
                         <div className="moreImages">
-                            <button className="moreImagesButton">More</button>
+                            <button className="moreImagesButton" onClick={loadMoreImages}>More</button>
                         </div>
                     </>
                     )

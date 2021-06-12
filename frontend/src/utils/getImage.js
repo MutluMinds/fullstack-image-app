@@ -3,8 +3,8 @@ const hostName = window.location.hostname === 'localhost'
     ? 'http://localhost:5000'
     : 'https://fullstack-image-app-2b6j2jrqk.vercel.app'
 
-export const getImages = async (imageType) => {
-    const response = await axios.get(`${hostName}/${imageType}`);
+export const getImages = async (imageType, limit, offset) => {
+    const response = await axios.get(`${hostName}/${imageType}?limit=${limit}&offset=${offset}`);
     const propertyName = imageType === 'gifs' ? 'data' : 'hits';
 
     return response.data[propertyName];

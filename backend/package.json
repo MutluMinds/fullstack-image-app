@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run lint & node ./server.js",
-    "dev": "npm run lint & nodemon ./server.js",
+    "dev": "sudo pkill node; npm run lint & nodemon ./server.js",
     "lint": "eslint . --ext .js"
+    
   },
   "keywords": [],
   "author": "",

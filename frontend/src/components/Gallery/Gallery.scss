@@ -33,6 +33,15 @@
     }    
 }
 
+.moreImages{
+   display: flex;
+   justify-content: center;
+}
+
+.moreImagesButton{
+
+}
+
 @media (min-width: 375px) {
   .search {
       &_gallery {

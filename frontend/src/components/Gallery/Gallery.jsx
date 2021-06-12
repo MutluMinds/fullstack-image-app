@@ -10,22 +10,29 @@ const SearchViewer = ({ images, imageType }) => {
         <>
             {
                 images && images.length
-                    ? (<div className="search_gallery">
-                        {
-                            images.map((img, index) => {
-                                return (
-                                    <div key={index}>
-                                        <a href={getImgSrc(imageType, img)} target="_blank" rel="noopener noreferrer">
-                                            <img
-                                                className="search_gallery--image"
-                                                src={getImgSrc(imageType, img)}
-                                                alt="" />
-                                        </a>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>)
+                    ? (<>
+                        <div className="search_gallery">
+                            {
+                                images.map((img, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <a href={getImgSrc(imageType, img)} target="_blank" rel="noopener noreferrer">
+                                                <img
+                                                    className="search_gallery--image"
+                                                    src={getImgSrc(imageType, img)}
+                                                    alt="" />
+                                            </a>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+
+                        <div className="moreImages">
+                            <button className="moreImagesButton">More</button>
+                        </div>
+                    </>
+                    )
                     : (
                         <div className="search_gallery--no-image">
                             <span className="search_gallery--no-image-text">Sorry couldn't find any image.</span>

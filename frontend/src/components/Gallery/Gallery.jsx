@@ -1,5 +1,7 @@
 import React from 'react';
 import './Gallery.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const SearchViewer = ({ images, imageType, loadMoreImages }) => {
     const getImgSrc = (type, img) => type === 'gifs'
@@ -10,28 +12,31 @@ const SearchViewer = ({ images, imageType, loadMoreImages }) => {
         <>
             {
                 images && images.length
-                    ? (<>
-                        <div className="search_gallery">
-                            {
-                                images.map((img, index) => {
-                                    return (
-                                        <div key={index}>
-                                            <a href={getImgSrc(imageType, img)} target="_blank" rel="noopener noreferrer">
-                                                <img
-                                                    className="search_gallery--image"
-                                                    src={getImgSrc(imageType, img)}
-                                                    alt="" />
-                                            </a>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
+                    ? (
+                        <>
+                            <div className="search_gallery">
+                                {
+                                    images.map((img, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <a href={getImgSrc(imageType, img)} target="_blank" rel="noopener noreferrer">
+                                                    <img
+                                                        className="search_gallery--image"
+                                                        src={getImgSrc(imageType, img)}
+                                                        alt="" />
+                                                </a>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
 
-                        <div className="moreImages">
-                            <button className="moreImagesButton" onClick={loadMoreImages}>More</button>
-                        </div>
-                    </>
+                            <div className="moreImages">
+                                <button className="moreImagesButton" onClick={loadMoreImages}>
+                                    <FontAwesomeIcon style={{ 'color': 'white', fontSize: '32px' }} icon={faAngleDown} />
+                                </button>
+                            </div>
+                        </>
                     )
                     : (
                         <div className="search_gallery--no-image">

@@ -36,10 +36,13 @@
 .moreImages {
    display: flex;
    justify-content: center;
+   margin: 20px;
 }
 
 .moreImagesButton {
-
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 @media (min-width: 375px) {

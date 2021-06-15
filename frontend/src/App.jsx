@@ -81,19 +81,11 @@ function App() {
   }
 
   const setInitialOffsetValue = (value) => {
-    if (value === 'gifs') {
-      setOffset(0);
-    } else {
-      setOffset(1);
-    }
+    value === 'gifs' ? setOffset(0) : setOffset(1);
   }
 
   const updateOffsetValue = () => {
-    if (imageType === 'gifs') {
-      setOffset(offset + limit + 1);
-    } else {
-      setOffset(offset + 1);
-    }
+    imageType === 'gifs' ? setOffset(offset + limit + 1) : setOffset(offset + 1);
   }
 
   return (

@@ -15,7 +15,7 @@ router.route('/').get(async (req, res) => {
 router.route('/search').get(async (req, res) => {
     try {
         const { searchTerm, limit, offset } = req.query;
-        
+
         res.json(await getSearchedImages('gif', limit, searchTerm, offset));
     } catch (error) {
         res.status(404);

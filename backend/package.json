@@ -7,7 +7,6 @@
     "start": "npm run lint & node ./server.js",
     "dev": "npm run lint & nodemon ./server.js",
     "lint": "eslint . --ext .js"
-    
   },
   "keywords": [],
   "author": "",

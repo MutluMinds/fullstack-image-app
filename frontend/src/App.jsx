@@ -12,22 +12,26 @@ function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [limit, setLimit] = useState(20);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
     async function fetchData() {
-      const receivedImages = await getImages(imageType);
+      const receivedImages = await getImages(imageType, limit, offset);
 
       setImages(receivedImages);
+      updateOffsetValue();
       setIsLoading(false);
-    }
-    ;
+    };
+
     fetchData();
   }, [imageType]);
 
   function handleChange(value) {
     setInputValue('');
     setImageType(value);
+    setInitialOffsetValue(value);
   }
 
   async function switchImagesProvider(searchTerm) {
@@ -37,9 +41,10 @@ function App() {
     if (searchTerm) {
       try {
         const formattedSearchTerm = searchTerm.replace(/[^a-zA-Z ]/g, "");
-        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm);
+        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm, limit, offset);
 
         setImages(receivedImages);
+        updateOffsetValue();
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -47,10 +52,40 @@ function App() {
       return;
     }
 
-    const receivedImages = await getImages(imageType);
+    const receivedImages = await getImages(imageType, limit, offset);
 
     setImages(receivedImages);
+    updateOffsetValue();
     setIsLoading(false);
+  }
+
+  const loadMoreImages = async () => {
+    if (inputValue) {
+      try {
+        const formattedSearchTerm = inputValue.replace(/[^a-zA-Z ]/g, "");
+        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm, limit, offset);
+
+        setImages([...images, ...receivedImages]);
+        updateOffsetValue();
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+      return;
+    }
+
+    const receivedImages = await getImages(imageType, limit, offset);
+
+    setImages([...images, ...receivedImages]);
+    updateOffsetValue();
+  }
+
+  const setInitialOffsetValue = (value) => {
+    value === 'gifs' ? setOffset(0) : setOffset(1);
+  }
+
+  const updateOffsetValue = () => {
+    imageType === 'gifs' ? setOffset(offset + limit + 1) : setOffset(offset + 1);
   }
 
   return (
@@ -65,7 +100,7 @@ function App() {
       {
         isLoading
           ? <Loading />
-          : <Gallery images={images} imageType={imageType} />
+          : <Gallery images={images} imageType={imageType} loadMoreImages={loadMoreImages} />
       }
     </div>
   );

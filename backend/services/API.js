@@ -7,14 +7,14 @@ const reqTimeout = 1000 * 5;
  * Handles axios request and returns
  * specific amount of data according to searchTerm.
 */
-async function getSearchedImages (imageType, limit, searchTerm) {
-    const { link, key, limitString } = imageType === 'gif'
+async function getSearchedImages (imageType, limit, searchTerm, offset) {
+    const { link, key, limitString, offsetString } = imageType === 'gif'
         ? apiSources.giphy
         : apiSources.pixabay;
 
     const searchQuery = `&q=${searchTerm}`;
-    const limitQuery = `&${limitString}=${limit}`;
-    const url = `${link}${key}${searchQuery}${limitQuery}`;
+    const query = `&${limitString}=${limit}&${offsetString}=${offset}`;
+    const url = `${link}${key}${searchQuery}${query}`;
 
     try {
         const response = await axios({
@@ -31,15 +31,15 @@ async function getSearchedImages (imageType, limit, searchTerm) {
 /**
  * Gets trending gifs/images with limit
 */
-async function getTrendingData (imageType, limit) {
+async function getTrendingData (imageType, limit, offset) {
     const isGifType = imageType === 'gifs';
-    const { trendingLink, key, limitString } = isGifType
+    const { trendingLink, key, limitString, offsetString } = isGifType
         ? apiSources.giphy
         : apiSources.pixabay;
-    const limitQuery = `&${limitString}=${limit}`;
+    const query = `&${limitString}=${limit}&${offsetString}=${offset}`;
     const url = isGifType
-        ? `${trendingLink}${key}${limitQuery}`
-        : `${trendingLink}${key}&editors_choice=true${limitQuery}`;
+        ? `${trendingLink}${key}${query}`
+        : `${trendingLink}${key}&editors_choice=true${query}`;
 
     try {
         const response = await axios({

@@ -3,7 +3,9 @@ const { getTrendingData, getSearchedImages } = require('../services/API');
 
 router.route('/').get(async (req, res) => {
     try {
-        res.json(await getTrendingData('gifs', 25));
+        const { limit, offset } = req.query;
+
+        res.json(await getTrendingData('gifs', limit, offset));
     } catch (error) {
         res.status(404);
         console.log(error);
@@ -11,10 +13,10 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/search').get(async (req, res) => {
-    const searchTerm = req.query.searchTerm;
-
     try {
-        res.json(await getSearchedImages('gif', 25, searchTerm));
+        const { searchTerm, limit, offset } = req.query;
+
+        res.json(await getSearchedImages('gif', limit, searchTerm, offset));
     } catch (error) {
         res.status(404);
         console.log(error);

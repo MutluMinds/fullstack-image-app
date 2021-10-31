@@ -18,7 +18,7 @@
 </p>
 
 ## ⚡️ Live
-  [Check it live](https://fullstack-image-app-furkanmutlu.vercel.app/)
+  [Check it live](https://fullstack-image-app-p1kzpigk3.vercel.app/)
 
 ## ✨ Quick start
 

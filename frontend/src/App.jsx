@@ -12,7 +12,7 @@ function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [limit, setLimit] = useState(20);
+  const [limit, ] = useState(20);
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {

@@ -1,18 +1,19 @@
 import React from 'react';
 import './Navbar.scss';
+import { IMAGE_TYPE_GIFS, IMAGE_TYPE_IMAGES } from "../../App";
 
 const Navbar = ({ onChange, value }) => {
     const navItems = [
-        {
-            label: 'GIPHY',
-            link: '/gifs',
-            imageType: 'gifs'
-        },
-        {
-            label: 'PIXABAY',
-            link: '/images',
-            imageType: 'images'
-        }
+      {
+        label: "GIPHY",
+        link: "/gifs",
+        imageType: IMAGE_TYPE_GIFS,
+      },
+      {
+        label: "PIXABAY",
+        link: "/images",
+        imageType: IMAGE_TYPE_IMAGES,
+      },
     ];
     const handleClick = (navItem) => onChange(navItem.imageType);
 

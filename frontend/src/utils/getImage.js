@@ -1,7 +1,9 @@
 import { IMAGE_TYPE_GIFS, IMAGE_TYPE_IMAGES } from "../App";
 
 const axios = require("axios");
-const hostName = `${process.env.REACT_APP_API_URL}`;
+const hostName = `${
+  process?.env?.REACT_APP_API_URL || "http://localhost:5000"
+}`;
 
 export const getImages = async (imageType, limit, offset) => {
   const response = await axios.get(

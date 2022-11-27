@@ -1,4 +1,4 @@
-import { IMAGE_TYPE_GIFS, IMAGE_TYPE_IMAGES } from "../App";
+import { IMAGE_TYPE_GIFS } from "../App";
 
 const axios = require("axios");
 const hostName = `${
@@ -23,7 +23,7 @@ export const getSearchedImages = async (
   const response = await axios.get(
     `${hostName}/${imageType}/search?searchTerm=${searchTerm}&limit=${limit}&offset=${offset}`
   );
-  const propertyName = imageType === IMAGE_TYPE_IMAGES ? "data" : "hits";
+  const propertyName = imageType === IMAGE_TYPE_GIFS ? "data" : "hits";
 
   return response.data[propertyName];
 };

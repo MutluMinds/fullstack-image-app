@@ -52,33 +52,3 @@
     Your frontend app is now running at `http://localhost:3000`!
     
     Your backend server is now running at `http://localhost:5000`!
-
-## 🧐 What's inside?
-
-    .
-    ├── backend
-      ├── api
-      ├── node_modules
-      ├── routes
-      ├── services
-      ├── .eslintrc.json
-      ├── .gitignore
-      ├── package-lock.json
-      ├── package.json
-      ├── server.js
-    ├── frontend
-      ├── node_modules
-      ├── public
-      ├── src
-        ├── assets
-        ├── components
-        ├── utils
-        ├── App.js
-        ├── index.js
-        ├── package.json
-      ├── .gitignore
-      ├── package-lock.json
-      ├── package.json
-      ├── README.md
-    ├── LICENCE
-    

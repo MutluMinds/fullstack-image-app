@@ -7,10 +7,11 @@ import Gallery from './components/Gallery/Gallery';
 import SearchImage from './components/SearchImage/SearchImage';
 import { getImages, getSearchedImages } from './utils/getImage';
 
-const LIMIT = 20;
+export const LIMIT = 20;
+export const IMAGE_TYPE_GIFS = 'gifs';
+export const IMAGE_TYPE_IMAGES = 'images';
 const DEFAULT_GIPHY_OFFSET = 0;
 const DEFAULT_PIXABAY_OFFSET = 1;
-const IMAGE_TYPE_GIFS = 'gifs';
 
 function App() {
   const [imageType, setImageType] = useState(IMAGE_TYPE_GIFS);
@@ -64,27 +65,6 @@ function App() {
     setIsLoading(false);
   }
 
-  const loadMoreImages = async () => {
-    if (inputValue) {
-      try {
-        const formattedSearchTerm = inputValue.replace(/[^a-zA-Z ]/g, "");
-        const receivedImages = await getSearchedImages(imageType, formattedSearchTerm, LIMIT, offset);
-
-        setImages([...images, ...receivedImages]);
-        updateOffsetValue();
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-      return;
-    }
-
-    const receivedImages = await getImages(imageType, LIMIT, offset);
-
-    setImages([...images, ...receivedImages]);
-    updateOffsetValue();
-  }
-
   const setInitialOffsetValue = (value) => {
     value === IMAGE_TYPE_GIFS ? setOffset(0) : setOffset(1);
   }
@@ -95,18 +75,26 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar
-        onChange={(value) => handleChange(value)}
-        value={imageType} />
+      <Navbar onChange={(value) => handleChange(value)} value={imageType} />
       <SearchImage
         onChange={(searchTerm) => switchImagesProvider(searchTerm)}
         value={inputValue}
-        setInputValue={setInputValue} />
-      {
-        isLoading
-          ? <Loading />
-          : <Gallery images={images} imageType={imageType} loadMoreImages={loadMoreImages} />
-      }
+        setInputValue={setInputValue}
+      />
+      {isLoading ? (
+        <div style={{ marginTop: '50px' }}>
+          <Loading />
+        </div>
+      ) : (
+        <Gallery
+          images={images}
+          setImages={setImages}
+          imageType={imageType}
+          inputValue={inputValue}
+          offset={offset}
+          setOffset={setOffset}
+        />
+      )}
     </div>
   );
 }

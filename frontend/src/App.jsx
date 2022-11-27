@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Gallery from './components/Gallery/Gallery';
 import SearchImage from './components/SearchImage/SearchImage';
 import { getImages, getSearchedImages } from './utils/getImage';
+import Corner from './components/Corner/Corner';
 
 export const LIMIT = 20;
 export const IMAGE_TYPE_GIFS = 'gifs';
@@ -76,6 +77,7 @@ function App() {
   return (
     <div className="App">
       <Navbar onChange={(value) => handleChange(value)} value={imageType} />
+      <Corner />
       <SearchImage
         onChange={(searchTerm) => switchImagesProvider(searchTerm)}
         value={inputValue}

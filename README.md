@@ -28,7 +28,8 @@
     https://github.com/furkanmutlu/fullstack-image-app.git
     ```
     
-2. Add your pixabay and giphy api keys on backend > api > sources.js
+2. - Create `.env` file with your api keys into `backend/` root. <br> You can see an example of it on `.env.example` in same root.
+    - Create `.env` file with your preferred host into `frontend/` root. <br> You can see an example of it on `.env.example` in same root.<br>
 
 3.  **Start developing.**
 

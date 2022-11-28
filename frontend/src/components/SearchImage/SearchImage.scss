@@ -11,10 +11,17 @@
         &-wrapper {
             display: flex;
             justify-content: center;
+            position: sticky;
+            z-index: 99;
+            top: 5px;
 
-            form {
+            .form-style-one {
                 display: inline-block;
                 width: 50%;
+            }
+            .form-style-second {
+                display: inline-block;
+                width: 95%;
             }
         }
 

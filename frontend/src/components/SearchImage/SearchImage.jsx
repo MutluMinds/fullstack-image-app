@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
+import { scrollTopY } from "../../utils/script";
 import "./SearchImage.scss";
 
 const SearchImage = ({ onChange, setInputValue, value }) => {
   const searchRef = useRef();
-  const [isSearchBarFull, setSearchBarFull] = useState(true);
+  const [isSearchBarFull, setSearchBarFull] = useState(false);
 
   function handleSearchSubmit(e) {
     e.preventDefault();
@@ -13,11 +14,7 @@ const SearchImage = ({ onChange, setInputValue, value }) => {
 
   const isSticky = () => {
     const scrollTop = window.scrollY;
-    if (scrollTop > 20) {
-      setSearchBarFull(false);
-    } else {
-      setSearchBarFull(true);
-    }
+    setSearchBarFull(scrollTop <= scrollTopY);
   };
   useEffect(() => {
     window.addEventListener("scroll", () => isSticky());
@@ -31,7 +28,7 @@ const SearchImage = ({ onChange, setInputValue, value }) => {
     <div className="search_input-wrapper">
       <form
         onSubmit={handleSearchSubmit}
-        className={isSearchBarFull ? `form-style-one` : `form-style-second`}
+        className={isSearchBarFull ? `search-bar-md'` : `search-bar-lg`}
       >
         <input
           ref={searchRef}

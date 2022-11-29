@@ -1,3 +1,13 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
     background-color:  #080B39;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

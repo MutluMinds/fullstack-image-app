@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import { scrollTopY } from "../../utils/script";
 import "./SearchImage.scss";
+
+const SCROLL_TOP_Y = 20;
 
 const SearchImage = ({ onChange, setInputValue, value }) => {
   const searchRef = useRef();
-  const [isSearchBarFull, setSearchBarFull] = useState(false);
+  const [isSearchBarFull, setIsSearchBarFull] = useState(false);
 
   function handleSearchSubmit(e) {
     e.preventDefault();
@@ -13,27 +14,28 @@ const SearchImage = ({ onChange, setInputValue, value }) => {
   }
 
   const isSticky = () => {
-    const scrollTop = window.scrollY;
-    setSearchBarFull(scrollTop <= scrollTopY);
+    const windownTopY = window.scrollY;
+    setIsSearchBarFull(windownTopY > SCROLL_TOP_Y);
   };
+
   useEffect(() => {
-    window.addEventListener("scroll", () => isSticky());
+    window.addEventListener("scroll", isSticky);
 
     return () => {
-      window.removeEventListener("scroll", () => isSticky());
+      window.removeEventListener("scroll", isSticky);
     };
-  });
+  }, []);
 
   return (
     <div className="search_input-wrapper">
       <form
         onSubmit={handleSearchSubmit}
-        className={isSearchBarFull ? `search-bar-md'` : `search-bar-lg`}
+        className={isSearchBarFull ? 'search-bar-lg' : 'search-bar-md'}
       >
         <input
           ref={searchRef}
           value={value}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={e => setInputValue(e.target.value)}
           className="search_input"
           type="text"
           placeholder="Search..."

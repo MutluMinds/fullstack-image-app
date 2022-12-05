@@ -25,6 +25,10 @@ nav ul {
     display: flex;
     justify-content: center;
 
+    li {
+        font-size: 20px;
+    }
+
     li > div {
         cursor: pointer;
     }

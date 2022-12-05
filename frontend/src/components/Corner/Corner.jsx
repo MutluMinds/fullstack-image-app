@@ -1,5 +1,4 @@
 import React from 'react';
-import './Corner.scss';
 
 const Corner = () => (
   <div>

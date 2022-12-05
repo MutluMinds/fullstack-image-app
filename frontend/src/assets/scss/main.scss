@@ -1,0 +1,12 @@
+// @import 'abstracts/variables';
+
+@import 'base/reset';
+
+@import '../../components/Navbar/Navbar';
+@import '../../components/Corner/Corner';
+@import '../../components/Gallery/Gallery';
+@import '../../components/Loading/Loading';
+@import '../../components/LoadMoreButton/LoadMoreButton';
+@import '../../components/SearchImage/SearchImage';
+
+@import 'themes/theme';

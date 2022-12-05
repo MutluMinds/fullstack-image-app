@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import './App.scss';
 import Loading from './components/Loading/Loading';
 import Navbar from './components/Navbar/Navbar';
 import Gallery from './components/Gallery/Gallery';

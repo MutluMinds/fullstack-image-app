@@ -1,0 +1,90 @@
+.ScrollTopButton {
+  display: flex;
+  position: sticky;
+  float: right;
+  height: 0;
+  width: 5.5vh;
+  padding-bottom: 5vh;
+  background-color: #2a3363;
+  border: 2px solid #5C6282;
+  border-radius: 15px;
+  justify-content: center;
+  top: 1.5vh;
+  right: 8vh;
+  z-index: 99;
+  // min-width: 3%;
+  // min-height: 3%;
+}
+
+.ScrollTopButton:hover {
+  background-color: #555; 
+}
+
+.ScrollIcon {
+  position: sticky;
+  margin-top: -0.8vh;
+  margin-left: 0.2vh;
+  // margin-bottom: 2vh;
+  font-size: 4vh;
+}
+
+.center {
+  border: 5px solid transparent;
+  // padding: 10px 0;
+}
+
+#rectangle{
+  position: sticky;
+  width: 3vh;
+  height: 1vh;
+  background: #da4167;
+  margin-top: 1vh;
+  margin-bottom: 0vh;
+  padding-bottom: 0vh;
+}
+
+// #center{
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+// }
+// .ScrollTopButton{
+//   display: block; /* Hidden by default */
+//   position: fixed; /* Fixed/sticky position */
+//   top: 1%; /* Place the button at the top of the page */
+//   right: 3%; /* Place the button 30px from the right */
+//   z-index: 99; /* Make sure it does not overlap */
+//   border: 2px solid #5C6282; /* Remove borders */
+//   margin: 10px;
+//   outline: none; /* Remove outline */
+//   background-color: #2a3363; /* Set a background color */
+//   color: white; /* Text color */
+//   cursor: pointer; /* Add a mouse pointer on hover */
+//   padding: 0.4%;
+//   // padding-right: 12px; /* Some padding */
+//   border-radius: 15px; /* Rounded corners */
+//   font-size: 30px; /* Increase font size */
+//   margin: 8px;
+//   // align-items: center;
+//   // justify-content: center;
+// }
+
+// // .ScrollIcon{
+
+// // }
+
+// #center{
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+// }
+
+// #rectangle{
+//   position: fixed;
+//   width: 18px;
+//   height: 6px;
+//   justify-content: right;
+//   background: #da4167;
+// }

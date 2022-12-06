@@ -5,6 +5,7 @@ import Loading from './components/Loading/Loading';
 import Navbar from './components/Navbar/Navbar';
 import Gallery from './components/Gallery/Gallery';
 import SearchImage from './components/SearchImage/SearchImage';
+import ScrollButton from "./components/ScrollTopButton/ScrollTopButton";
 import { getImages, getSearchedImages } from './utils/getImage';
 import Corner from './components/Corner/Corner';
 
@@ -83,6 +84,7 @@ function App() {
         value={inputValue}
         setInputValue={setInputValue}
       />
+      <ScrollButton />
       {isLoading ? (
         <div style={{ marginTop: '50px' }}>
           <Loading />

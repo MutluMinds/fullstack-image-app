@@ -1,5 +1,4 @@
 import React from 'react';
-import './Navbar.scss';
 import { IMAGE_TYPE_GIFS, IMAGE_TYPE_IMAGES } from "../../App";
 
 const Navbar = ({ onChange, value }) => {

@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./SearchImage.scss";
 
 const SCROLL_TOP_Y = 20;
 

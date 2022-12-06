@@ -1,5 +1,4 @@
 import React from "react";
-import "./Gallery.scss";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
 
 const SearchViewer = ({ images, setImages, imageType, inputValue, offset, setOffset }) => {

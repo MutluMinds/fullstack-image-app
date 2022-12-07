@@ -29,7 +29,8 @@
     transform: rotate(10deg);
   }
 }
-@media (max-width: 500px) {
+
+@media (max-width: $screenSmall) {
   .github-corner {
     &:hover .octo-arm {
       animation: none;

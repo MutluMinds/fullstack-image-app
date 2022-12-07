@@ -6,14 +6,14 @@
         &--active {
             width: 30px;
             height: 10px;
-            background-color: #DA4167;
+            background-color: $pink;
             margin-top: 14px;
             margin-left: auto;
             margin-right: auto;
         }
 
         &--link {
-            color: white;
+            color: $white;
             font-weight: bold;
             text-decoration: none;
         }

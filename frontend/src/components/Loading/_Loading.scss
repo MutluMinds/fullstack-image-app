@@ -14,8 +14,8 @@
         .loading_item {
             width: 90px;
             height: 90px;
-            border: 16px solid #5C6282;
-            border-top: 16px solid #DA4167;
+            border: 16px solid $lightGray;
+            border-top: 16px solid $pink;
         }
     }
 
@@ -23,8 +23,8 @@
         .loading_item {
             width: 15px;
             height: 15px;
-            border: 4px solid #5C6282;
-            border-top: 4px solid #DA4167;
+            border: 4px solid $lightGray;
+            border-top: 4px solid $pink;
         }
     }
 

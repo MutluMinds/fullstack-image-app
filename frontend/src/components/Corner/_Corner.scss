@@ -7,8 +7,8 @@
     animation: wave 560ms ease-in-out;
   }
   svg {
-    fill: rgb(0, 112, 243);
-    color: rgb(246, 248, 250);
+    fill: $lightBlue;
+    color: $white;
     .octo-arm {
       transform-origin: 130px 106px;
     }

@@ -22,7 +22,7 @@
         }
 
         &--no-image-text {
-            color: white;
+            color: $white;
             font-size: 30px;
         }
     }
@@ -35,7 +35,7 @@
     }    
 }
 
-@media (min-width: 375px) {
+@media (min-width: $screenSmall) {
   .search {
       &_gallery {
           grid-template-columns: repeat(3, 1fr);
@@ -47,7 +47,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $screenMedium) {
   .search {
       &_gallery {
           grid-template-columns: repeat(4, 1fr);
@@ -59,7 +59,7 @@
   }
 }
 
-@media (min-width: 1140px) {
+@media (min-width: $screenLarge) {
   .search {
       &_gallery {
           grid-template-columns: repeat(5, 1fr);

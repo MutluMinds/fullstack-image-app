@@ -1,10 +1,29 @@
-import React from "react";
-import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
+import React, {useState} from "react";
 
-const SearchViewer = ({ images, setImages, imageType, inputValue, offset, setOffset }) => {
+import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
+import Modal from "react-bootstrap/Modal";
+
+const SearchViewer = ({
+  images,
+  setImages,
+  imageType,
+  inputValue,
+  offset,
+  setOffset,
+}) => {
+  const [show, setShow] = useState(false);
+  const [imageOnModal, setImageOnModal] = useState();
+
+  const handleClose = () => setShow(false);
+  const handleShow = (img) => {
+    console.log(img);
+    setImageOnModal(img);
+    setShow(true);
+  };
+
   const getImgSrc = (type, img) =>
     type === "gifs"
-      ? img && img.images && img.images.downsized.url
+      ? img?.images?.downsized?.url || img?.images?.original?.url 
       : img && img.webformatURL;
 
   return (
@@ -12,23 +31,36 @@ const SearchViewer = ({ images, setImages, imageType, inputValue, offset, setOff
       {images && images.length ? (
         <>
           <div className="search_gallery">
-            {images.map((img, index) => {
-              return (
-                <div key={index}>
-                  <a
-                    href={getImgSrc(imageType, img)}
-                    target="_blank"
-                    rel="noopener noreferrer">
+            {images
+              .filter((img) => getImgSrc(imageType, img))
+              .map((img, idx) => {
+                return (
+                  <div className="image-wrapper" key={`${img.id}-${idx}`} onClick={() => handleShow(img)}>
                     <img
                       className="search_gallery--image"
                       src={getImgSrc(imageType, img)}
-                      alt=""
+                      alt={img.title}
                     />
-                  </a>
-                </div>
-              );
-            })}
+                  </div>
+                );
+              })}
           </div>
+          <Modal
+            show={show}
+            onHide={handleClose}
+            dialogClassName="modal-dialog"
+            centered>
+            <Modal.Body className="show-grid">
+              <div className="modal-image">
+                <img
+                  src={getImgSrc(imageType, imageOnModal)}
+                  alt={
+                    imageOnModal?.title || "No title available for this image."
+                  }
+                />
+              </div>
+            </Modal.Body>
+          </Modal>
 
           <LoadMoreButton
             imageType={imageType}

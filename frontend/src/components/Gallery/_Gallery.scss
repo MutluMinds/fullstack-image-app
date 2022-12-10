@@ -30,7 +30,7 @@
     &_gallery > div {
         overflow: hidden;
         position: relative;
-        height: 100px;
+        height: 42vw;
         border-radius: 8px;
     }    
 }
@@ -67,6 +67,8 @@
   .search {
       &_gallery {
           grid-template-columns: repeat(4, 1fr);
+          padding-left: 4vw;
+          padding-right: 4vw;
       }
 
       &_gallery > div {

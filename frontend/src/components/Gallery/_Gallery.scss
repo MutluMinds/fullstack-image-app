@@ -30,9 +30,25 @@
     &_gallery > div {
         overflow: hidden;
         position: relative;
-        height: 100px;
+        height: 42vw;
         border-radius: 8px;
     }    
+}
+
+.modal-dialog {
+    .modal-body {
+        padding: 0;
+    }
+}
+
+.modal-image {
+    img {
+        width: 100%;
+    }
+}
+
+.image-wrapper:hover {
+    cursor: pointer;
 }
 
 @media (min-width: $screenSmall) {
@@ -42,19 +58,7 @@
       }
 
       &_gallery > div {
-         height: 150px;
-      }
-  }
-}
-
-@media (min-width: $screenMedium) {
-  .search {
-      &_gallery {
-          grid-template-columns: repeat(4, 1fr);
-      }
-
-      &_gallery > div {
-         height: 200px;
+         height: 30vw;
       }
   }
 }
@@ -62,11 +66,13 @@
 @media (min-width: $screenLarge) {
   .search {
       &_gallery {
-          grid-template-columns: repeat(5, 1fr);
+          grid-template-columns: repeat(4, 1fr);
+          padding-left: 4vw;
+          padding-right: 4vw;
       }
 
       &_gallery > div {
-         height: 190px;
+         height: 20vw;
       }
   }
 }

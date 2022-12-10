@@ -83,7 +83,7 @@ function App() {
         setInputValue={setInputValue}
       />
       {isLoading ? (
-        <div style={{ marginTop: '50px' }}>
+        <div style={{ marginTop: "50px" }}>
           <Loading />
         </div>
       ) : (

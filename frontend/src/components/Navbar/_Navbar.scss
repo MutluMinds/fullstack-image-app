@@ -3,6 +3,12 @@
         list-style-type: none;
         padding: 15px;
         
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
         &--active {
             width: 30px;
             height: 10px;

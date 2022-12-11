@@ -1,29 +1,24 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { IMAGE_TYPE_GIFS } from "../../static/constants";
 
-import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
 import Modal from "react-bootstrap/Modal";
 
 const SearchViewer = ({
   images,
-  setImages,
   imageType,
-  inputValue,
-  offset,
-  setOffset,
 }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = (img) => {
-    console.log(img);
     setImageOnModal(img);
     setShow(true);
   };
 
   const getImgSrc = (type, img) =>
-    type === "gifs"
-      ? img?.images?.downsized?.url || img?.images?.original?.url 
+    type === IMAGE_TYPE_GIFS
+      ? img?.images?.downsized?.url || img?.images?.original?.url
       : img && img.webformatURL;
 
   return (
@@ -35,7 +30,12 @@ const SearchViewer = ({
               .filter((img) => getImgSrc(imageType, img))
               .map((img, idx) => {
                 return (
-                  <div className="image-wrapper" key={`${img.id}-${idx}`} onClick={() => handleShow(img)}>
+                  <div
+                    className="image-wrapper"
+                    key={`${img.id}-${idx}`}
+                    onMouseDown={() => handleShow(img)}
+                    role="button"
+                    tabIndex={idx}>
                     <img
                       className="search_gallery--image"
                       src={getImgSrc(imageType, img)}
@@ -61,15 +61,6 @@ const SearchViewer = ({
               </div>
             </Modal.Body>
           </Modal>
-
-          <LoadMoreButton
-            imageType={imageType}
-            inputValue={inputValue}
-            offset={offset}
-            setOffset={setOffset}
-            images={images}
-            setImages={setImages}
-          />
         </>
       ) : (
         <div className="search_gallery--no-image">

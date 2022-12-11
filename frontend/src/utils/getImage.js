@@ -1,4 +1,4 @@
-import { IMAGE_TYPE_GIFS } from "../App";
+import { IMAGE_TYPE_GIFS } from "../static/constants";
 
 const axios = require("axios");
 const hostName = `${

@@ -29,12 +29,11 @@ const SearchImage = ({ onChange, setInputValue, value }) => {
     <div className="search_input-wrapper">
       <form
         onSubmit={handleSearchSubmit}
-        className={isSearchBarFull ? 'search-bar-lg' : 'search-bar-md'}
-      >
+        className={isSearchBarFull ? "search-bar-lg" : "search-bar-md"}>
         <input
           ref={searchRef}
           value={value}
-          onChange={e => setInputValue(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value)}
           className="search_input"
           type="text"
           placeholder="Search..."

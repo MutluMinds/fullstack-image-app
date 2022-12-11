@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { LIMIT } from "../../static/constants";
+import { IMAGE_TYPE_GIFS } from "../../static/constants";
 import { getImages, getSearchedImages } from "../../utils/getImage";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../Loading/Loading";
-import { LIMIT, IMAGE_TYPE_GIFS } from "../../App";
 
 const LoadMoreButton = ({
   imageType,
   inputValue,
   offset,
   setOffset,
-  images,
   setImages,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,15 +29,14 @@ const LoadMoreButton = ({
       const receivedImages = !inputValue
         ? await getImages(imageType, LIMIT, offset)
         : await getSearchedImages(
-            imageType,
-            inputValue.replace(/[^a-zA-Z ]/g, ""),
-            LIMIT,
-            offset
-          );
+          imageType,
+          inputValue.replace(/[^a-zA-Z ]/g, ""),
+          LIMIT,
+          offset
+        );
 
-      setImages([...images, ...receivedImages]);
+      setImages((images) => [...images, ...receivedImages]);
       updateOffsetValue();
-
     } catch (error) {
       console.error(error);
     } finally {

@@ -1,5 +1,4 @@
 .loading {
-    margin-top: 50px;
     
     .loading_wrapper {
         display: flex;
@@ -13,6 +12,8 @@
     }
 
     .loading_wrapper.large {
+        margin-top: 50px;
+
         .loading_item {
             width: 90px;
             height: 90px;

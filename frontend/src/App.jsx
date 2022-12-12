@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { IMAGE_TYPE_GIFS } from "./static/constants/imageTypes";
-
-import useGetImages from "./hooks/useGetImages";
+import {
+  IMAGE_TYPE_GIFS,
+  DEFAULT_GIPHY_OFFSET,
+  DEFAULT_PIXABAY_OFFSET,
+  LIMIT
+} from "./static/constants";
+import getImages from "./utils/getImages";
 
 import Loading from "./components/Loading/Loading";
 import Navbar from "./components/Navbar/Navbar";
@@ -10,18 +14,32 @@ import SearchImage from "./components/SearchImage/SearchImage";
 import Corner from "./components/Corner/Corner";
 import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
 
+const getDefaultOffset = (imageType) =>
+  imageType === IMAGE_TYPE_GIFS ? DEFAULT_GIPHY_OFFSET : DEFAULT_PIXABAY_OFFSET;
+
 function App() {
   const [imageType, setImageType] = useState(IMAGE_TYPE_GIFS);
-
-  const { images, setImages, isLoading, fetchImages, offset, setOffset } =
-    useGetImages(imageType);
-
+  const [offset, setOffset] = useState(DEFAULT_GIPHY_OFFSET);
+  const [isLoading, setIsLoading] = useState(false);
+  const [images, setImages] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    fetchImages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsLoading(true);
+    const defaultOffset = getDefaultOffset(imageType);
+
+    getImages(imageType, defaultOffset).then((receivedImages) => {
+      const newOffset = getNewOffset(defaultOffset);
+      setImages(receivedImages);
+      setOffset(newOffset);
+      setIsLoading(false);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageType]);
+
+  function getNewOffset(prevOffset) {
+    return imageType === IMAGE_TYPE_GIFS ? prevOffset + LIMIT + 1 : offset + 1;
+  }
 
   function handleNavbarChange(value) {
     setInputValue("");
@@ -30,8 +48,16 @@ function App() {
   }
 
   async function switchImagesProvider(searchTerm) {
+    setIsLoading(true);
     setInputValue(searchTerm);
-    fetchImages(searchTerm);
+
+    const defaultOffset = getDefaultOffset(imageType);
+    getImages(imageType, defaultOffset, searchTerm).then((receivedImages) => {
+      const newOffset = getNewOffset(defaultOffset);
+      setImages(receivedImages);
+      setOffset(newOffset);
+      setIsLoading(false);
+    });
   }
 
   const setInitialOffsetValue = (value) => {
@@ -56,11 +82,7 @@ function App() {
         <>
           <Gallery
             images={images}
-            setImages={setImages}
             imageType={imageType}
-            inputValue={inputValue}
-            offset={offset}
-            setOffset={setOffset}
           />
           <LoadMoreButton
             imageType={imageType}

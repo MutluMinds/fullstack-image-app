@@ -28,7 +28,7 @@ const fetchSearchedImages = async (
   return response.data[propertyName];
 };
 
-const getImages = async (imageType, offsetToFetch, searchTerm) => {
+export const getImages = async (imageType, offsetToFetch, searchTerm) => {
   try {
     if (searchTerm) {
       const formattedSearchTerm = searchTerm.replace(/[^a-zA-Z ]/g, "");
@@ -47,4 +47,3 @@ const getImages = async (imageType, offsetToFetch, searchTerm) => {
   }
 };
 
-export default getImages;

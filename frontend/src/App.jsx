@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import {
   IMAGE_TYPE_GIFS,
   DEFAULT_GIPHY_OFFSET,
-  DEFAULT_PIXABAY_OFFSET,
-  LIMIT
+  DEFAULT_PIXABAY_OFFSET
 } from "./static/constants";
-import getImages from "./utils/getImages";
+import { getImages, getNewOffset } from "./utils";
 
 import Loading from "./components/Loading/Loading";
 import Navbar from "./components/Navbar/Navbar";
@@ -29,17 +28,12 @@ function App() {
     const defaultOffset = getDefaultOffset(imageType);
 
     getImages(imageType, defaultOffset).then((receivedImages) => {
-      const newOffset = getNewOffset(defaultOffset);
+      const newOffset = getNewOffset(imageType, defaultOffset);
       setImages(receivedImages);
       setOffset(newOffset);
       setIsLoading(false);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageType]);
-
-  function getNewOffset(prevOffset) {
-    return imageType === IMAGE_TYPE_GIFS ? prevOffset + LIMIT + 1 : offset + 1;
-  }
 
   function handleNavbarChange(value) {
     setInputValue("");
@@ -53,7 +47,7 @@ function App() {
 
     const defaultOffset = getDefaultOffset(imageType);
     getImages(imageType, defaultOffset, searchTerm).then((receivedImages) => {
-      const newOffset = getNewOffset(defaultOffset);
+      const newOffset = getNewOffset(imageType, defaultOffset);
       setImages(receivedImages);
       setOffset(newOffset);
       setIsLoading(false);

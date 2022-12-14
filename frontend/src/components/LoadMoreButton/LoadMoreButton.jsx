@@ -17,13 +17,12 @@ const LoadMoreButton = ({
   const loadMoreImages = async () => {
     setIsLoading(true);
 
-    getImages(imageType, offset, inputValue)
-      .then(receivedImages => {
-        const newOffset = getNewOffset(imageType, offset);
-        setImages((images) => [...images, ...receivedImages]);
-        setOffset(newOffset);
-        setIsLoading(false);
-      })
+    getImages(imageType, offset, inputValue).then((receivedImages) => {
+      const newOffset = getNewOffset(imageType, offset);
+      setImages((images) => [...images, ...receivedImages]);
+      setOffset(newOffset);
+      setIsLoading(false);
+    });
   };
 
   return (

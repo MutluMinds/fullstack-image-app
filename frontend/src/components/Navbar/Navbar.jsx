@@ -1,5 +1,8 @@
 import React from "react";
-import { IMAGE_TYPE_GIFS, IMAGE_TYPE_IMAGES } from "../../static/constants/imageTypes";
+import {
+  IMAGE_TYPE_GIFS,
+  IMAGE_TYPE_IMAGES,
+} from "../../static/constants/imageTypes";
 
 const Navbar = ({ onChange, value }) => {
   const navItems = [

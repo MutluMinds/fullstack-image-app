@@ -3,10 +3,7 @@ import { IMAGE_TYPE_GIFS } from "../../static/constants";
 
 import Modal from "react-bootstrap/Modal";
 
-const Gallery = ({
-  images,
-  imageType,
-}) => {
+const Gallery = ({ images, imageType }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
 

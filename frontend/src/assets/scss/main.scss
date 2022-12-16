@@ -4,10 +4,14 @@
 
 @import 'base/reset';
 
+@import 'layout/grid';
+
 @import '../../components/Navbar/Navbar';
 @import '../../components/Corner/Corner';
 @import '../../components/Gallery/Gallery';
 @import '../../components/Loading/Loading';
+@import '../../components/StickyBar/StickyBar';
+@import '../../components/ScrollTopButton/ScrollTopButton';
 @import '../../components/LoadMoreButton/LoadMoreButton';
 @import '../../components/SearchImage/SearchImage';
 

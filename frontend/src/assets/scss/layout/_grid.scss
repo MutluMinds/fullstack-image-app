@@ -1,0 +1,19 @@
+
+.page {
+  padding-left: $pagePadding;
+  padding-right: $pagePadding;
+}
+
+@media (min-width: $screenSmall) {
+  .page {
+      padding-left: $pagePaddingSm;
+      padding-right: $pagePaddingSm;
+    }
+}
+
+@media (min-width: $screenLarge) {
+  .page {
+    padding-left: $pagePaddingLg;
+    padding-right: $pagePaddingLg;
+  }
+}

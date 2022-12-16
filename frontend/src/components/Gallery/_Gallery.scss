@@ -3,9 +3,7 @@
         margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: 2em;
-        padding: 20px;
-        
+        grid-gap: 1em;
         
         &--image {
             width: 100%;
@@ -55,6 +53,7 @@
   .search {
       &_gallery {
           grid-template-columns: repeat(3, 1fr);
+          grid-gap: 1.2em;
       }
 
       &_gallery > div {
@@ -67,8 +66,7 @@
   .search {
       &_gallery {
           grid-template-columns: repeat(4, 1fr);
-          padding-left: 4vw;
-          padding-right: 4vw;
+          grid-gap: 2em;
       }
 
       &_gallery > div {

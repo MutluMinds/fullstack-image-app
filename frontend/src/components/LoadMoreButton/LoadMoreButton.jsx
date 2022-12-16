@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +12,12 @@ const LoadMoreButton = ({
   setOffset,
   setImages,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 
   const loadMoreImages = async () => {
     setIsLoading(true);
@@ -24,12 +29,17 @@ const LoadMoreButton = ({
       setIsLoading(false);
     });
   };
+  const handleScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      loadMoreImages();
+    }
+  };
 
   return (
     <div className="moreImages">
       {!isLoading ? (
         <button className="moreImagesButton" onClick={loadMoreImages}>
-          <FontAwesomeIcon
+           <FontAwesomeIcon
             style={{ color: "white", fontSize: "32px" }}
             icon={faAngleDown}
           />

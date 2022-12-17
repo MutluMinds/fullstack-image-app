@@ -18,7 +18,7 @@ const LoadMoreButton = ({
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, []);
 
   const loadMoreImages = async (loadOffset) => {
     setIsLoading(true);

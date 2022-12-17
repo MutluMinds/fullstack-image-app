@@ -27,14 +27,7 @@ const GalleryPage = ({ imageType }) => {
 
   return (
     <div className="page">
-      <StickyBar
-        imageType={imageType}
-        setIsLoading={setIsLoading}
-        setInputValue={setInputValue}
-        setImages={setImages}
-        setOffset={setOffset}
-        inputValue={inputValue}
-      />
+      <StickyBar setInputValue={setInputValue} />
       {isLoading ? (
         <Loading />
       ) : (

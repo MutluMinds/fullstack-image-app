@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { IMAGE_TYPE_GIFS } from "../../static/constants";
 
 import Modal from "react-bootstrap/Modal";
 
-const Gallery = ({ images, imageType }) => {
+const Gallery = ({ images }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
 
@@ -13,18 +12,13 @@ const Gallery = ({ images, imageType }) => {
     setShow(true);
   };
 
-  const getImgSrc = (type, img) =>
-    type === IMAGE_TYPE_GIFS
-      ? img?.images?.downsized?.url || img?.images?.original?.url
-      : img && img.webformatURL;
-
   return (
     <>
       {images && images.length ? (
         <>
           <div className="search_gallery">
             {images
-              .filter((img) => getImgSrc(imageType, img))
+              .filter((img) => img.src)
               .map((img, idx) => {
                 return (
                   <div
@@ -35,7 +29,7 @@ const Gallery = ({ images, imageType }) => {
                     tabIndex={idx}>
                     <img
                       className="search_gallery--image"
-                      src={getImgSrc(imageType, img)}
+                      src={img.src}
                       alt={img.title}
                     />
                   </div>
@@ -50,7 +44,7 @@ const Gallery = ({ images, imageType }) => {
             <Modal.Body className="show-grid">
               <div className="modal-image">
                 <img
-                  src={getImgSrc(imageType, imageOnModal)}
+                  src={imageOnModal?.src}
                   alt={
                     imageOnModal?.title || "No title available for this image."
                   }

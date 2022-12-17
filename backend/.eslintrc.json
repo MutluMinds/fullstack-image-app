@@ -15,9 +15,13 @@
             2,
             "always"
         ],
-        "indent": [
-            2,
-            4
-        ]
+        "linebreak-style": 1,
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "no-undef": "error",
+        "no-unused-vars": "error",
+        "space-before-function-paren": "error"
     }
 }

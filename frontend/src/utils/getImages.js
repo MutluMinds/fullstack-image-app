@@ -1,4 +1,4 @@
-import { IMAGE_TYPE_GIFS, LIMIT } from "../static/constants";
+import { LIMIT } from "../static/constants";
 
 const axios = require("axios");
 const hostName = `${
@@ -6,12 +6,11 @@ const hostName = `${
 }`;
 
 const fetchImages = async (imageType, limit, offset) => {
-  const response = await axios.get(
+  const { data } = await axios.get(
     `${hostName}/${imageType}?limit=${limit}&offset=${offset}`
   );
-  const propertyName = imageType === IMAGE_TYPE_GIFS ? "data" : "hits";
 
-  return response.data[propertyName];
+  return data;
 };
 
 const fetchSearchedImages = async (
@@ -20,12 +19,11 @@ const fetchSearchedImages = async (
   limit,
   offset
 ) => {
-  const response = await axios.get(
+  const { data } = await axios.get(
     `${hostName}/${imageType}/search?searchTerm=${searchTerm}&limit=${limit}&offset=${offset}`
   );
-  const propertyName = imageType === IMAGE_TYPE_GIFS ? "data" : "hits";
 
-  return response.data[propertyName];
+  return data;
 };
 
 export const getImages = async (imageType, offsetToFetch, searchTerm) => {

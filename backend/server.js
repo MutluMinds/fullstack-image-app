@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,12 +10,12 @@ app.use(cors());
 app.use(express.json());
 
 /* Routes */
-const gifsRouter = require('./routes/gifs');
-const imagesRouter = require('./routes/images');
+const gifsRouter = require("./routes/gifs");
+const imagesRouter = require("./routes/images");
 
-app.use('/gifs', gifsRouter);
-app.use('/images', imagesRouter);
+app.use("/gifs", gifsRouter);
+app.use("/images", imagesRouter);
 
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+  console.log(`Server is running on port: ${port}`);
 });

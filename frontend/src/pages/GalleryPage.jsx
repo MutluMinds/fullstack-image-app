@@ -39,7 +39,7 @@ const GalleryPage = ({ imageType }) => {
         <Loading />
       ) : (
         <>
-          <Gallery images={images} imageType={imageType} />
+          <Gallery images={images} />
           <LoadMoreButton
             imageType={imageType}
             inputValue={inputValue}

@@ -5,7 +5,7 @@ import ScrollButton from "../ScrollTopButton/ScrollTopButton";
 
 const SCROLL_TOP_Y = 30;
 
-const StickyBar = ({ setInputValue }) => {
+const StickyBar = ({ onSearch }) => {
   const [sticky, setSticky] = useState(false);
 
   const isSticky = () => {
@@ -23,7 +23,7 @@ const StickyBar = ({ setInputValue }) => {
 
   return (
     <div className="sticky-wrapper">
-      <SearchImage onSearch={(searchTerm) => setInputValue(searchTerm)} />
+      <SearchImage onSearch={onSearch} />
       {sticky ? <ScrollButton /> : null}
     </div>
   );

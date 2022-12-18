@@ -1,54 +1,57 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { getImages, getNewOffset, getDefaultOffset } from "../../utils";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../Loading/Loading";
-import { getImages, getNewOffset } from "../../utils";
+
+const hasScrolledBottom = () => window.innerHeight + window.scrollY >= document.body.offsetHeight;
 
 const LoadMoreButton = ({
   imageType,
   inputValue,
-  offset,
-  setOffset,
-  setImages,
+  afterLoad,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
   const loadingRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const offset = useRef(getDefaultOffset(imageType) + 1);
+
+  const loadMoreImages = useCallback(async (loadOffset) => {
+    setIsLoading(true);
+
+    return getImages(imageType, loadOffset, inputValue)
+      .then((newImages) => {
+        const newOffset = getNewOffset(imageType, loadOffset);
+        offset.current = newOffset;
+        loadingRef.current = false;
+
+        afterLoad(newImages);
+        setIsLoading(false);
+      });
+  }, [imageType, afterLoad, inputValue]);
+
+
+  const handleScroll = useCallback(() => {
+    if (
+      loadingRef.current || 
+      !hasScrolledBottom()
+    ) return;
+
+    loadingRef.current = true;
+    loadMoreImages(offset.current);
+  }, [loadMoreImages]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const loadMoreImages = async (loadOffset) => {
-    setIsLoading(true);
-
-    getImages(imageType, loadOffset, inputValue).then((receivedImages) => {
-      const newOffset = getNewOffset(imageType, loadOffset);
-      setImages((images) => [...images, ...receivedImages]);
-      setOffset(newOffset);
-      setIsLoading(false);
-      loadingRef.current = false;
-    });
-  };
-  const handleScroll = () => {
-    if (!loadingRef.current && window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      setOffset(currentOffset => {
-        loadingRef.current = true;
-        loadMoreImages(currentOffset);
-        return currentOffset;
-      });
-    }
-  };
+  }, [handleScroll]);
 
   return (
-    <div className="moreImages">
+    <div className="more-images">
       {!isLoading ? (
-        <button className="moreImagesButton" onClick={() => loadMoreImages(offset)}>
+        <button className="more-images-button">
           <FontAwesomeIcon
-            style={{ color: "white", fontSize: "32px" }}
+            className="load-more-icon"
             icon={faAngleDown}
           />
         </button>

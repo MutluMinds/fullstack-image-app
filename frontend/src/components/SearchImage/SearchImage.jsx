@@ -13,7 +13,7 @@ const SearchImage = ({ onSearch }) => {
       <form onSubmit={handleSearchSubmit}>
         <input
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           className="search_input"
           type="text"
           placeholder="Search..."

@@ -1,4 +1,4 @@
-.moreImages {
+.more-images {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,8 +6,13 @@
   height: 32px;
 }
 
-.moreImagesButton {
+.more-images-button {
   background: none;
   border: none;
   cursor: pointer;
+
+  .load-more-icon {
+    color: $white;
+    font-size: 32px;
+  }
 }

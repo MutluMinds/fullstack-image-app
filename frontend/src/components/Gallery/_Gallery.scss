@@ -34,7 +34,10 @@
 }
 .expand-button {
   display: none;
-  background-color: $darkBlue;
+  background-color: $pink;
+  &:hover {
+    background-color: $lightGray;
+  }
 }
 
 .modal-dialog {
@@ -51,8 +54,8 @@
 
 .image-wrapper:hover .expand-button {
   position: absolute;
-  top: 1%;
-  left: 89%;
+  top: 10px;
+  right: 10px;
   display: inline;
   border-radius: 5px;
   border: none;

@@ -37,7 +37,7 @@ const Gallery = ({ images }) => {
                       className="expand-button"
                       onMouseDown={() => handleShow(img)}
                     >
-                      <FontAwesomeIcon icon={faExpandAlt} inverse size="lg" />{" "}
+                      <FontAwesomeIcon icon={faExpandAlt} inverse size="md" />
                     </button>
                   </div>
                 );

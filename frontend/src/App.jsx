@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import {
-  IMAGE_TYPE_GIFS,
-} from "./static/constants";
+import { IMAGE_TYPE_GIFS } from "./static/constants";
 
 import Navbar from "./components/Navbar/Navbar";
 import Corner from "./components/Corner/Corner";

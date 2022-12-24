@@ -5,6 +5,7 @@ import StickyBar from "../components/StickyBar/StickyBar";
 import Loading from "../components/Loading/Loading";
 import Gallery from "../components/Gallery/Gallery";
 import LoadMoreButton from "../components/LoadMoreButton/LoadMoreButton";
+import Badge from "../components/Badge/Badge";
 
 const GalleryPage = ({ imageType }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +30,12 @@ const GalleryPage = ({ imageType }) => {
         <Loading />
       ) : (
         <>
+          {inputValue 
+            ? <div className="d-flex align-items-center gap-2">
+              <h1 className="d-inline-block">Search Results for</h1>
+              <Badge inputValue={inputValue} onClick={() => setInputValue("")} />
+            </div> 
+            : <h1>Trending</h1>}
           <Gallery images={images} />
           <LoadMoreButton
             imageType={imageType}

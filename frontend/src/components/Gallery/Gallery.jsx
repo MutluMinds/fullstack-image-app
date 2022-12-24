@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "react-bootstrap/Modal";
 
@@ -24,14 +26,19 @@ const Gallery = ({ images }) => {
                   <div
                     className="image-wrapper"
                     key={`${img.id}-${idx}`}
-                    onMouseDown={() => handleShow(img)}
-                    role="button"
-                    tabIndex={idx}>
+                    tabIndex={idx}
+                  >
                     <img
                       className="search_gallery--image"
                       src={img.src}
                       alt={img.title}
                     />
+                    <button
+                      className="expand-button"
+                      onMouseDown={() => handleShow(img)}
+                    >
+                      <FontAwesomeIcon icon={faExpandAlt} inverse size="md" />
+                    </button>
                   </div>
                 );
               })}
@@ -40,7 +47,8 @@ const Gallery = ({ images }) => {
             show={show}
             onHide={handleClose}
             dialogClassName="modal-dialog"
-            centered>
+            centered
+          >
             <Modal.Body className="show-grid">
               <div className="modal-image">
                 <img

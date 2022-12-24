@@ -1,5 +1,27 @@
 body {
     background-color:  $darkBlue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: $white;
+}
 
+h1, h2, h3, h4, h5, h6, span, button, ul, li {
+    color: $white;
+}
+
+// Backgrounds
+.bg-dark-gray {
+    background-color: $darkGray;
+}
+
+.bg-light-gray {
+    background-color: $lightGray;
+}
+
+// Text
+.text-light-blue {
+    color: $lightBlue;
+}
+
+.text-pink {
+    color: $pink;
 }

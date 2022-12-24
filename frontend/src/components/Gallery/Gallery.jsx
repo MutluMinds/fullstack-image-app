@@ -1,12 +1,24 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
+
+import LikeUI from "../ImageLikeUI/LikeUI";
 
 import Modal from "react-bootstrap/Modal";
 
 const Gallery = ({ images }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
+
+  // here i am assuming that the "image" argument of Gallery component is in following format
+  // const images = [
+  //   {
+  //     id: 0,
+
+  //     src: { Pic },
+  //     title: "Wave of water",
+  //     likes: 0,
+  //   },
+  //   { id: 1, src: { Pic }, title: "Wave of Avatar", likes: 0 },
+  // ];
 
   const handleClose = () => setShow(false);
   const handleShow = (img) => {
@@ -28,17 +40,9 @@ const Gallery = ({ images }) => {
                     key={`${img.id}-${idx}`}
                     tabIndex={idx}
                   >
-                    <img
-                      className="search_gallery--image"
-                      src={img.src}
-                      alt={img.title}
-                    />
-                    <button
-                      className="expand-button"
-                      onMouseDown={() => handleShow(img)}
-                    >
-                      <FontAwesomeIcon icon={faExpandAlt} inverse size="md" />
-                    </button>
+                    {/* here i used separate component called "LikeUI" */}
+
+                    <LikeUI images={img} handleShow={handleShow} />
                   </div>
                 );
               })}

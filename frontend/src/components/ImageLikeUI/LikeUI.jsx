@@ -1,27 +1,35 @@
 import React, { useState } from "react";
-import Pic from "./justaPhoto.avif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
+
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
-import "./_ImageLikeUi.css";
-function LikeUI() {
+function LikeUI({ images, handleShow }) {
   const [solid, setSolid] = useState(false);
-  window.addEventListener("dblclick", () => {
+  const handleDoubleClick = () => {
     setSolid(!solid);
-  });
+  };
   return (
-    <div className="imageMain">
-      <div
-        className="likeButton"
+    <>
+      <img
+        className="search_gallery--image"
+        src={images.src}
+        alt={images.title}
+        onDoubleClick={() => handleDoubleClick()}
+      />
+      <button
+        className="like-icon"
         onMouseEnter={() => setSolid(!solid)}
         onMouseLeave={() => setSolid(!solid)}
         onClick={() => setSolid(!solid)}
       >
-        <FontAwesomeIcon icon={solid ? fasHeart : farHeart} />
-      </div>
-      <img className="image" src={Pic} alt="" />
-    </div>
+        <FontAwesomeIcon icon={solid || images.likes ? fasHeart : farHeart} />
+      </button>
+      <button className="expand-button" onMouseDown={() => handleShow(images)}>
+        <FontAwesomeIcon icon={faExpandAlt} inverse size="md" />
+      </button>
+    </>
   );
 }
 

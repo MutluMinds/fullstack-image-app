@@ -11,7 +11,7 @@
   React + Node JS Image and GIF search app
 </h1>
 <p align="center">
-  This is not an official project. This app gets image data by using Node.js from <a href="https://developers.giphy.com/">GIPHY API</a> (gifs) 
+  This app gets image data by using Node.js from <a href="https://developers.giphy.com/">GIPHY API</a> (gifs) 
   and <a href="https://pixabay.com/api/docs/">PIXABAY API</a> (images) and renders them by using React.js
   It's designed with mobile first approach and created by <a href="https://furkanmutlu.com/">Furkan Mutlu</a> with ❤️.
   You can contribute submitting a pull-request.

@@ -22,6 +22,7 @@ const LazyImg = ({ placeholderSrc, src, ...props }) => {
   return (
     <img
       className={`image ${customClass}`}
+      loading="lazy"
       {...{ src: imgSrc, ...props }}
       alt={props.alt || ""}
     />

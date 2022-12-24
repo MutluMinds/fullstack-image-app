@@ -1,26 +1,37 @@
-const router = require('express').Router();
-const { getTrendingData, getSearchedImages } = require('../services/API');
+const router = require("express").Router();
+const { getTrendingData, getSearchedImages } = require("../services/API");
 
-router.route('/').get(async (req, res) => {
-    try {
-        const { limit, offset } = req.query;
+router.route("/").get(async (req, res) => {
+  try {
+    const { limit, offset } = req.query;
+    const { hits } = await getTrendingData("images", limit, offset);
 
-        res.json(await getTrendingData('images', limit, offset));
-    } catch (error) {
-        res.status(404);
-        console.log(error);
-    }
+    const dataWithSrc = hits.map((img) => ({
+      ...img,
+      src: img?.webformatURL || img?.largeImageURL || ""
+    }));
+
+    res.json(dataWithSrc);
+  } catch (error) {
+    res.status(404);
+    console.log(error);
+  }
 });
 
-router.route('/search').get(async (req, res) => {
-    try {
-        const { searchTerm, limit, offset } = req.query;
+router.route("/search").get(async (req, res) => {
+  try {
+    const { searchTerm, limit, offset } = req.query;
+    const { hits } = await getSearchedImages("images", limit, searchTerm, offset);
+    const dataWithSrc = hits.map((img) => ({
+      ...img,
+      src: img?.webformatURL || img?.largeImageURL || ""
+    }));
 
-        res.json(await getSearchedImages('images', limit, searchTerm, offset));
-    } catch (error) {
-        res.status(404);
-        console.log(error);
-    }
+    res.json(dataWithSrc);
+  } catch (error) {
+    res.status(404);
+    console.log(error);
+  }
 });
 
 module.exports = router;

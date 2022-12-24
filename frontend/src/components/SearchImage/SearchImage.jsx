@@ -1,24 +1,19 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
-
-const SearchImage = ({ onChange, setInputValue, value }) => {
-  const searchRef = useRef();
+const SearchImage = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
   function handleSearchSubmit(e) {
     e.preventDefault();
-    const searchTerm = searchRef.current.value;
-    onChange(searchTerm);
+    onSearch(searchTerm);
   }
 
   return (
     <div className="search_input-wrapper">
-      <form
-        onSubmit={handleSearchSubmit}
-      >
+      <form onSubmit={handleSearchSubmit}>
         <input
-          ref={searchRef}
-          value={value}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="search_input"
           type="text"
           placeholder="Search..."

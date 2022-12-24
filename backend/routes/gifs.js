@@ -7,7 +7,8 @@ router.route("/").get(async (req, res) => {
     const { data } = await getTrendingData("gifs", limit, offset);
     const dataWithSrc = data.map((img) => ({
       ...img,
-      src: img?.images?.downsized?.url || img?.images?.original?.url || ""
+      src: img?.images?.original?.url || "",
+      placeholderSrc: img?.images?.fixed_height_small_still?.url || ""
     }));
 
     res.json(dataWithSrc);
@@ -23,7 +24,8 @@ router.route("/search").get(async (req, res) => {
     const { data } = await getSearchedImages("gif", limit, searchTerm, offset);
     const dataWithSrc = data.map((img) => ({
       ...img,
-      src: img?.images?.downsized?.url || img?.images?.original?.url
+      src: img?.images?.original?.url || "",
+      placeholderSrc: img?.images?.fixed_height_small_still?.url || ""
     }));
 
     res.json(dataWithSrc);

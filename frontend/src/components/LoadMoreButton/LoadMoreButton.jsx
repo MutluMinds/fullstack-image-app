@@ -21,6 +21,8 @@ const LoadMoreButton = ({
 
     return getImages(imageType, loadOffset, inputValue)
       .then((newImages) => {
+        if (!loadingRef.current) return;
+
         const newOffset = getNewOffset(imageType, loadOffset);
         offset.current = newOffset;
         loadingRef.current = false;
@@ -31,7 +33,7 @@ const LoadMoreButton = ({
   }, [imageType, afterLoad, inputValue]);
 
 
-  const handleScroll = useCallback(() => {
+  let handleScroll = useCallback(() => {
     if (
       loadingRef.current || 
       !hasScrolledBottom()
@@ -43,7 +45,11 @@ const LoadMoreButton = ({
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      loadingRef.current = false;
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [handleScroll]);
 
   return (

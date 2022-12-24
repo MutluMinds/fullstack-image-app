@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
+import LazyImg from "../LazyImage/LazyImage";
 
 const Gallery = ({ images }) => {
   const [show, setShow] = useState(false);
@@ -28,10 +29,11 @@ const Gallery = ({ images }) => {
                     key={`${img.id}-${idx}`}
                     tabIndex={idx}
                   >
-                    <img
-                      className="search_gallery--image"
+                    <LazyImg
                       src={img.src}
-                      alt={img.title}
+                      placeholderSrc={img.placeholderSrc}
+                      width="100%"
+                      height="100%"
                     />
                     <button
                       className="expand-button"

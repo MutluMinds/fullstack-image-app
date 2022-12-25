@@ -33,7 +33,7 @@ const LoadMoreButton = ({
   }, [imageType, afterLoad, inputValue]);
 
 
-  let handleScroll = useCallback(() => {
+  const handleScroll = useCallback(() => {
     if (
       loadingRef.current || 
       !hasScrolledBottom()

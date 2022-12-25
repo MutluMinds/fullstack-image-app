@@ -8,7 +8,7 @@
   <img src="https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png" height="60">
 </p>
 <h1 align="center">
-  React + Node JS Image and GIF search app
+  React + Node JS image and gif search app
 </h1>
 <p align="center">
   This app gets image data by using Node.js from <a href="https://developers.giphy.com/">GIPHY API</a> (gifs) 

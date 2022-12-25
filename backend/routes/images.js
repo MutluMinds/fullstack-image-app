@@ -8,7 +8,8 @@ router.route("/").get(async (req, res) => {
 
     const dataWithSrc = hits.map((img) => ({
       ...img,
-      src: img?.webformatURL || img?.largeImageURL || ""
+      src: img?.webformatURL || img?.largeImageURL || "",
+      placeholderSrc: img?.previewURL || ""
     }));
 
     res.json(dataWithSrc);
@@ -24,7 +25,8 @@ router.route("/search").get(async (req, res) => {
     const { hits } = await getSearchedImages("images", limit, searchTerm, offset);
     const dataWithSrc = hits.map((img) => ({
       ...img,
-      src: img?.webformatURL || img?.largeImageURL || ""
+      src: img?.webformatURL || img?.largeImageURL || "",
+      placeholderSrc: img?.previewURL || ""
     }));
 
     res.json(dataWithSrc);

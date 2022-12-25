@@ -40,9 +40,11 @@ const Gallery = ({ images }) => {
                     key={`${img.id}-${idx}`}
                     tabIndex={idx}
                   >
+
                     {/* here i used separate component called "LikeUI" */}
 
                     <LikeUI images={img} handleShow={handleShow} />
+
                   </div>
                 );
               })}

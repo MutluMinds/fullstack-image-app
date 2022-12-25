@@ -34,7 +34,9 @@
 }
 .expand-button {
   display: none;
-  background-color: $pink;
+  background-color: $darkGray;
+  border: 1px solid $lightGray;
+
   &:hover {
     background-color: $lightGray;
   }
@@ -72,7 +74,6 @@
   right: 10px;
   display: inline;
   border-radius: 5px;
-  border: none;
 }
 .image-wrapper:hover .like-icon {
   box-sizing: border-box;

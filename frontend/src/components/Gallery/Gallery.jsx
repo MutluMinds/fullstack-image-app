@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 import LikeUI from "../ImageLikeUI/LikeUI";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
+import LazyImg from "../LazyImage/LazyImage";
 
 const Gallery = ({ images }) => {
   const [show, setShow] = useState(false);
@@ -40,6 +42,7 @@ const Gallery = ({ images }) => {
                     key={`${img.id}-${idx}`}
                     tabIndex={idx}
                   >
+
 
                     {/* here i used separate component called "LikeUI" */}
 

@@ -7,21 +7,21 @@ import Gallery from "../components/Gallery/Gallery";
 import LoadMoreButton from "../components/LoadMoreButton/LoadMoreButton";
 import Badge from "../components/Badge/Badge";
 
-const GalleryPage = ({ imageType }) => {
+const GalleryPage = ({ apiType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [images, setImages] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
-    const defaultOffset = getDefaultOffset(imageType);
+    const defaultOffset = getDefaultOffset(apiType);
 
-    getImages(imageType, defaultOffset, inputValue)
+    getImages(apiType, defaultOffset, inputValue)
       .then((receivedImages) => {
         setImages(receivedImages);
         setIsLoading(false);
       });
-  }, [imageType, inputValue]);
+  }, [apiType, inputValue]);
 
   return (
     <div className="page">
@@ -36,9 +36,9 @@ const GalleryPage = ({ imageType }) => {
               <Badge inputValue={inputValue} onClick={() => setInputValue("")} />
             </div> 
             : <h1>Trending</h1>}
-          <Gallery images={images} />
+          <Gallery images={images} apiType={apiType} />
           <LoadMoreButton
-            imageType={imageType}
+            apiType={apiType}
             inputValue={inputValue}
             afterLoad={(newImages) => setImages(images => [...images, ...newImages])}
           />

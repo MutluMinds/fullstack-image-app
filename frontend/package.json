@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@testing-library/jest-dom": "^4.2.4",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "bootstrap": "^5.2.3",
+    "classnames": "^2.3.2",
     "normalize.css": "^8.0.1",
     "react": "^16.14.0",
     "react-bootstrap": "^2.7.0",

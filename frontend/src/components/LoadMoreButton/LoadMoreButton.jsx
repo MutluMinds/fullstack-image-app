@@ -8,29 +8,29 @@ import Loading from "../Loading/Loading";
 const hasScrolledBottom = () => window.innerHeight + window.scrollY >= document.body.offsetHeight;
 
 const LoadMoreButton = ({
-  imageType,
+  apiType,
   inputValue,
   afterLoad,
 }) => {
   const loadingRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
-  const offset = useRef(getDefaultOffset(imageType) + 1);
+  const offset = useRef(getDefaultOffset(apiType) + 1);
 
   const loadMoreImages = useCallback(async (loadOffset) => {
     setIsLoading(true);
 
-    return getImages(imageType, loadOffset, inputValue)
+    return getImages(apiType, loadOffset, inputValue)
       .then((newImages) => {
         if (!loadingRef.current) return;
 
-        const newOffset = getNewOffset(imageType, loadOffset);
+        const newOffset = getNewOffset(apiType, loadOffset);
         offset.current = newOffset;
         loadingRef.current = false;
 
         afterLoad(newImages);
         setIsLoading(false);
       });
-  }, [imageType, afterLoad, inputValue]);
+  }, [apiType, afterLoad, inputValue]);
 
 
   const handleScroll = useCallback(() => {

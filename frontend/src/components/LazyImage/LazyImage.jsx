@@ -13,7 +13,7 @@ const LazyImg = ({ placeholderSrc, src, ...props }) => {
     return () => {
       img.src = null;
       img.onload = null;
-    }
+    };
   }, [src]);
 
   const customClass =

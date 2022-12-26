@@ -1,19 +1,40 @@
 import React, { useState } from "react";
-import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
-import LazyImg from "../LazyImage/LazyImage";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import GalleryItem from "./GalleryItem/GalleryItem";
 
-const Gallery = ({ images }) => {
+const Gallery = ({ images, apiType }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
 
+  const { 
+    storage: favImages,
+    setStorage: setFavImages 
+  }  = useLocalStorage(apiType, []);
+
   const handleClose = () => setShow(false);
+
   const handleShow = (img) => {
     setImageOnModal(img);
     setShow(true);
   };
+
+  const handleLike = ({ id, src, placeholderSrc }) => {
+    if (!favImages.find(favImg => favImg.id === id)) {
+      setFavImages(prevImages => [...prevImages, {
+        id,
+        src,
+        placeholderSrc
+      }]);
+
+      return;
+    }
+
+    setFavImages(favImages.filter(favImg => favImg.id !== id));
+  };
+
+  const hasLike = (id) => favImages && favImages.find(favImg => favImg.id === id);
 
   return (
     <>
@@ -22,28 +43,20 @@ const Gallery = ({ images }) => {
           <div className="search_gallery">
             {images
               .filter((img) => img.src)
-              .map((img, idx) => {
-                return (
-                  <div
-                    className="image-wrapper"
-                    key={`${img.id}-${idx}`}
-                    tabIndex={idx}
-                  >
-                    <LazyImg
-                      src={img.src}
-                      placeholderSrc={img.placeholderSrc}
-                      width="100%"
-                      height="100%"
-                    />
-                    <button
-                      className="expand-button"
-                      onMouseDown={() => handleShow(img)}
-                    >
-                      <FontAwesomeIcon icon={faExpandAlt} inverse/>
-                    </button>
-                  </div>
-                );
-              })}
+              .map(({ 
+                id, 
+                title, 
+                src, 
+                placeholderSrc 
+              }, idx) => (
+                <GalleryItem 
+                  key={`${idx}-${id}`} 
+                  item={{ id, title, src, placeholderSrc }} 
+                  liked={hasLike(id)}
+                  onLike={() => handleLike({ id, src, placeholderSrc })}
+                  onExpand={() => handleShow({ src, title })}
+                />
+              ))}
           </div>
           <Modal
             show={show}

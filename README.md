@@ -13,8 +13,8 @@
 <p align="center">
   This app gets image data by using Node.js from <a href="https://developers.giphy.com/">GIPHY API</a> (gifs) 
   and <a href="https://pixabay.com/api/docs/">PIXABAY API</a> (images) and renders them by using React.js
-  It's designed with mobile first approach and created by <a href="https://furkanmutlu.com/">Furkan Mutlu</a> with ❤️.
-  You can contribute submitting a pull-request.
+  It's designed and developed with mobile first approach.
+  You can contribute by submitting a pull-request or adding a new issue.
 </p>
 
 ## ⚡️ Live
@@ -53,3 +53,7 @@
     Your frontend app is now running at `http://localhost:3000`!
     
     Your backend server is now running at `http://localhost:5000`!
+    
+## 🙏 Support
+
+Don't forget to leave a star ⭐️

@@ -47,6 +47,8 @@
     npm install
     npm start
     ```
+    
+    If you face any issues during the installation, it may be because you're using a new Node version, you can fix that by downgrading to the LTS version (Node 16.x)
 
 3.  **Running!**
 

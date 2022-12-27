@@ -12,8 +12,8 @@ router.route("/").get(async (req, res) => {
       src: img?.webformatURL || img?.largeImageURL || "",
       placeholderSrc: img?.previewURL || ""
     }));
-
-    res.json(dataWithSrc);
+    const filterArr = Utils(dataWithSrc);
+    res.json(filterArr);
   } catch (error) {
     res.status(404);
     console.log(error);
@@ -29,12 +29,20 @@ router.route("/search").get(async (req, res) => {
       src: img?.webformatURL || img?.largeImageURL || "",
       placeholderSrc: img?.previewURL || ""
     }));
-
-    res.json(dataWithSrc);
+    const filterArr = Utils(dataWithSrc);
+    res.json(filterArr);
   } catch (error) {
     res.status(404);
     console.log(error);
   }
 });
-
+function Utils (dataWithSrc) {
+  const seen = new Set();
+  const filterArr = dataWithSrc.filter((el) => {
+    const duplicate = seen.has(el.id);
+    seen.add(el.id);
+    return !duplicate;
+  });
+  return filterArr;
+}
 module.exports = router;

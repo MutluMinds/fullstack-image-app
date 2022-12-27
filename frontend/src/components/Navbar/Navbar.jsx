@@ -1,23 +1,25 @@
 import React from "react";
-import {
-  IMAGE_TYPE_GIFS,
-  IMAGE_TYPE_IMAGES,
-} from "../../static/constants/imageTypes";
+import {APIS} from "../../static/constants";
 
-const Navbar = ({ onChange, value }) => {
+const Navbar = ({ onChange, value }) => { 
   const navItems = [
     {
       label: "GIPHY",
       link: "/gifs",
-      imageType: IMAGE_TYPE_GIFS,
+      apiType: APIS.giphy,
     },
     {
       label: "PIXABAY",
       link: "/images",
-      imageType: IMAGE_TYPE_IMAGES,
+      apiType: APIS.pixabay,
     },
+    {
+      label: "UNSPLASH",
+      link: "/unsplashimages",
+      apiType: APIS.unsplash
+    }
   ];
-  const handleClick = (navItem) => onChange(navItem.imageType);
+  const handleClick = (navItem) => onChange(navItem.apiType);
 
   return (
     <div>
@@ -25,14 +27,14 @@ const Navbar = ({ onChange, value }) => {
         <ul>
           {navItems.map((navItem) => {
             return (
-              <li key={navItem.imageType} className="nav_item">
+              <li key={navItem.apiType} className="nav_item">
                 <button onClick={() => handleClick(navItem)}>
                   <span className="nav_item--link" to={navItem.link}>
                     {navItem.label}
                   </span>
                   <div
                     className={
-                      navItem.imageType === value ? "nav_item--active" : null
+                      navItem.apiType === value ? "nav_item--active" : null
                     }
                   />
                 </button>

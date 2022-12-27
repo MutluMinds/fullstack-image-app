@@ -1,15 +1,15 @@
 import {
   LIMIT,
-  IMAGE_TYPE_GIFS,
+  APIS,
   DEFAULT_GIPHY_OFFSET,
   DEFAULT_PIXABAY_OFFSET,
 } from "../static/constants";
 
-export const getNewOffset = (imageType, prevOffset) => {
-  return imageType === IMAGE_TYPE_GIFS
+export const getNewOffset = (apiType, prevOffset) => {
+  return apiType === APIS.giphy
     ? prevOffset + LIMIT + 1
     : prevOffset + 1;
 };
 
-export const getDefaultOffset = (imageType) =>
-  imageType === IMAGE_TYPE_GIFS ? DEFAULT_GIPHY_OFFSET : DEFAULT_PIXABAY_OFFSET;
+export const getDefaultOffset = (apiType) =>
+  apiType === APIS.giphy ? DEFAULT_GIPHY_OFFSET : DEFAULT_PIXABAY_OFFSET;

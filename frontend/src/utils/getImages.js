@@ -5,40 +5,40 @@ const hostName = `${
   process?.env?.REACT_APP_API_URL || "http://localhost:5000"
 }`;
 
-const fetchImages = async (imageType, limit, offset) => {
+const fetchImages = async (apiType, limit, offset) => {
   const { data } = await axios.get(
-    `${hostName}/${imageType}?limit=${limit}&offset=${offset}`
+    `${hostName}/${apiType}?limit=${limit}&offset=${offset}`
   );
 
   return data;
 };
 
 const fetchSearchedImages = async (
-  imageType,
+  apiType,
   searchTerm,
   limit,
   offset
 ) => {
   const { data } = await axios.get(
-    `${hostName}/${imageType}/search?searchTerm=${searchTerm}&limit=${limit}&offset=${offset}`
+    `${hostName}/${apiType}/search?searchTerm=${searchTerm}&limit=${limit}&offset=${offset}`
   );
 
   return data;
 };
 
-export const getImages = async (imageType, offsetToFetch, searchTerm) => {
+export const getImages = async (apiType, offsetToFetch, searchTerm) => {
   try {
     if (searchTerm) {
       const formattedSearchTerm = searchTerm.replace(/[^a-zA-Z ]/g, "");
 
-      return await fetchSearchedImages(
-        imageType,
+      return (await fetchSearchedImages(
+        apiType,
         formattedSearchTerm,
         LIMIT,
         offsetToFetch
-      );
+      ));
     } else {
-      return await fetchImages(imageType, LIMIT, offsetToFetch);
+      return (await fetchImages(apiType, LIMIT, offsetToFetch));
     }
   } catch (error) {
     console.error(error);

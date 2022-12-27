@@ -46,6 +46,7 @@
       "error",
       2
     ],
+    "semi": "error",
     "linebreak-style": 1,
     "quotes": [
       "error",

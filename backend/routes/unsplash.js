@@ -1,17 +1,17 @@
 const router = require("express").Router();
+const blurhash = require("blurhash");
+const { apiSources } = require("../api/sources");
 const { getTrendingData, getSearchedImages } = require("../services/API");
 
 router.route("/").get(async (req, res) => {
   try {
     const { limit, offset } = req.query;
-    const { hits } = await getTrendingData("images", limit, offset);
-
-    const dataWithSrc = hits.map((img) => ({
+    const { data } = await getTrendingData(apiSources.unsplash.id, limit, offset);
+    const dataWithSrc = data.map((img) => ({
       ...img,
-      src: img?.webformatURL || img?.largeImageURL || "",
-      placeholderSrc: img?.previewURL || ""
+      src: img.urls.regular,
+      placeholderSrc: blurhash.decode(img.blur_hash)
     }));
-
     res.json(dataWithSrc);
   } catch (error) {
     res.status(404);
@@ -22,13 +22,12 @@ router.route("/").get(async (req, res) => {
 router.route("/search").get(async (req, res) => {
   try {
     const { searchTerm, limit, offset } = req.query;
-    const { hits } = await getSearchedImages("images", limit, searchTerm, offset);
-    const dataWithSrc = hits.map((img) => ({
+    const { results } = await getSearchedImages(apiSources.unsplash.id, limit, searchTerm, offset);
+    const dataWithSrc = results.map((img) => ({
       ...img,
-      src: img?.webformatURL || img?.largeImageURL || "",
-      placeholderSrc: img?.previewURL || ""
+      src: img.urls.regular,
+      placeholderSrc: blurhash.decode(img.blur_hash)
     }));
-
     res.json(dataWithSrc);
   } catch (error) {
     res.status(404);

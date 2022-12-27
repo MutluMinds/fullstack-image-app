@@ -33,6 +33,14 @@
 
 3.  **Start developing.**
 
+    Prerequisites:
+    
+     Before contributing or adding a new feature, please make sure you have already installed the following tools:
+    
+    - NodeJs (Works with Node LTS version v16.13.0).
+    - Optional NVM: Switch Node version by using nvm use (on Windows, use nvm use v16.x.x). If this is not installed, run nvm install v16.13.0.
+    
+
     Navigate separately into frontend and backend folders.
 
     ```sh

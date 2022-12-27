@@ -8,6 +8,7 @@ const reqTimeout = 1000 * 5;
  * specific amount of data according to searchTerm.
  */
 async function getSearchedImages (apiType, limit, searchTerm, offset) {
+
   let url;
   if (apiType !== "unsplash") {
     const { link, key, limitString, offsetString } =
@@ -38,6 +39,7 @@ async function getSearchedImages (apiType, limit, searchTerm, offset) {
  * Gets trending gifs/images with limit
  */
 async function getTrendingData (apiType, limit, offset) {
+
   let url;
   if (apiType !== "unsplash") {
     const isGiphy = apiType === apiSources.giphy.id;
@@ -51,6 +53,7 @@ async function getTrendingData (apiType, limit, offset) {
     const query = `&${limitString}=${limit}&${offsetString}=${offset}`;
     url = `${trendingLink}${key}${query}`;
   };
+
   try {
     const response = await axios({
       method: "GET",

@@ -33,9 +33,13 @@ const Gallery = ({ images, apiType }) => {
 
     setFavImages(favImages.filter(favImg => favImg.id !== id));
   };
-
   const hasLike = (id) => favImages && favImages.find(favImg => favImg.id === id);
-
+  const seen = new Set();
+  images=images.filter((el) => {
+    const duplicate = seen.has(el.id);
+    seen.add(el.id);
+    return !duplicate;
+  });
   return (
     <>
       {images && images.length ? (

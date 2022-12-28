@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import classnames from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,6 +18,8 @@ const Overlay = ({
   const getLikeIcon = () => {
     return liked ? faFilledHeart : faHeart;
   };
+  const [toolTipShow, setToolTipShow] = useState(false);
+
 
   return (
     <>

@@ -17,10 +17,8 @@
   <a href="https://unsplash.com/documentation">UNSPLASH API</a> (images)
   and renders them by using React.js
   
-  
   It's designed and developed with mobile first approach.
   You can contribute by submitting a pull-request or adding a new issue.
-
 </p>
 
 ## ⚡️ Live

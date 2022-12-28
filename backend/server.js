@@ -12,9 +12,11 @@ app.use(express.json());
 /* Routes */
 const giphyRouter = require("./routes/giphy");
 const pixabayRouter = require("./routes/pixabay");
+const unsplashRouter = require("./routes/unsplash");
 
 app.use("/giphy", giphyRouter);
 app.use("/pixabay", pixabayRouter);
+app.use("/unsplash", unsplashRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

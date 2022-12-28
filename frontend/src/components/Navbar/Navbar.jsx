@@ -1,7 +1,9 @@
 import React from "react";
-import { APIS } from "../../static/constants";
 
-const Navbar = ({ onChange, value }) => {
+import {APIS} from "../../static/constants";
+
+
+const Navbar = ({ onChange, value }) => { 
   const navItems = [
     {
       label: "GIPHY",
@@ -13,6 +15,11 @@ const Navbar = ({ onChange, value }) => {
       link: "/images",
       apiType: APIS.pixabay,
     },
+    {
+      label: "UNSPLASH",
+      link: "/unsplashimages",
+      apiType: APIS.unsplash
+    }
   ];
   const handleClick = (navItem) => onChange(navItem.apiType);
 

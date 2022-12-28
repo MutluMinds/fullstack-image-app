@@ -1,6 +1,5 @@
-import React, { useState }from "react";
+import React, { useState, useRef }from "react";
 import classnames from "classnames";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 import { faHeart  } from "@fortawesome/free-regular-svg-icons";
@@ -19,7 +18,7 @@ const Overlay = ({
     return liked ? faFilledHeart : faHeart;
   };
   const [toolTipShow, setToolTipShow] = useState(false);
-
+  const target = useRef(null);
 
   return (
     <>

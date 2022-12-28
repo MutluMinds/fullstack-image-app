@@ -13,8 +13,8 @@
 <p align="center">
   This app gets image data by using Node.js from <a href="https://developers.giphy.com/">GIPHY API</a> (gifs) 
   and <a href="https://pixabay.com/api/docs/">PIXABAY API</a> (images) and renders them by using React.js
-  It's designed with mobile first approach and created by <a href="https://furkanmutlu.com/">Furkan Mutlu</a> with ❤️.
-  You can contribute submitting a pull-request.
+  It's designed and developed with mobile first approach.
+  You can contribute by submitting a pull-request or adding a new issue.
 </p>
 
 ## ⚡️ Live
@@ -32,6 +32,14 @@
     - Create `.env` file with your preferred host into `frontend/` root. <br> You can see an example of it on `.env.example` in same root.<br>
 
 3.  **Start developing.**
+
+    Prerequisites:
+    
+     Before contributing or adding a new feature, please make sure you have already installed the following tools:
+    
+    - NodeJs (Works with Node LTS version v16.13.0).
+    - Optional NVM: Switch Node version by using nvm use (on Windows, use nvm use v16.x.x). If this is not installed, run nvm install v16.13.0.
+    
 
     Navigate separately into frontend and backend folders.
 
@@ -53,3 +61,7 @@
     Your frontend app is now running at `http://localhost:3000`!
     
     Your backend server is now running at `http://localhost:5000`!
+    
+## 🙏 Support
+
+Don't forget to leave a star ⭐️

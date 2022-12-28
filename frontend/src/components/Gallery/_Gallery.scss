@@ -32,15 +32,6 @@
     border-radius: 8px;
   }
 }
-.expand-button {
-  display: none;
-  background-color: $darkGray;
-  border: 1px solid $lightGray;
-
-  &:hover {
-    background-color: $lightGray;
-  }
-}
 
 .modal-dialog {
   .modal-body {
@@ -52,14 +43,6 @@
   img {
     width: 100%;
   }
-}
-
-.image-wrapper:hover .expand-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: inline;
-  border-radius: 5px;
 }
 
 @media (min-width: $screenSmall) {

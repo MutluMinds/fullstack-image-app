@@ -1,10 +1,11 @@
 const router = require("express").Router();
+const { apiSources } = require("../api/sources");
 const { getTrendingData, getSearchedImages } = require("../services/API");
 
 router.route("/").get(async (req, res) => {
   try {
     const { limit, offset } = req.query;
-    const { data } = await getTrendingData("gifs", limit, offset);
+    const { data } = await getTrendingData(apiSources.giphy.id, limit, offset);
     const dataWithSrc = data.map((img) => ({
       ...img,
       src: img?.images?.downsized?.url || "",
@@ -21,7 +22,7 @@ router.route("/").get(async (req, res) => {
 router.route("/search").get(async (req, res) => {
   try {
     const { searchTerm, limit, offset } = req.query;
-    const { data } = await getSearchedImages("gif", limit, searchTerm, offset);
+    const { data } = await getSearchedImages(apiSources.giphy.id, limit, searchTerm, offset);
     const dataWithSrc = data.map((img) => ({
       ...img,
       src: img?.images?.downsized?.url || "",

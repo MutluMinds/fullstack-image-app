@@ -10,11 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 /* Routes */
-const gifsRouter = require("./routes/gifs");
-const imagesRouter = require("./routes/images");
+const giphyRouter = require("./routes/giphy");
+const pixabayRouter = require("./routes/pixabay");
 
-app.use("/gifs", gifsRouter);
-app.use("/images", imagesRouter);
+app.use("/giphy", giphyRouter);
+app.use("/pixabay", pixabayRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

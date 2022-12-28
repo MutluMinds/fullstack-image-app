@@ -8,6 +8,16 @@
   }
 }
 
+.copy-button {
+  display: none;
+  background-color: $darkGray;
+  border: 1px solid $lightGray;
+
+  &:hover {
+    background-color: $lightGray;
+  }
+}
+
 .image-wrapper {
   cursor: pointer;
 

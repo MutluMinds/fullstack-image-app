@@ -8,6 +8,16 @@
   }
 }
 
+.copy-button {
+  display: none;
+  background-color: $darkGray;
+  border: 1px solid $lightGray;
+
+  &:hover {
+    background-color: $lightGray;
+  }
+}
+
 .image-wrapper {
   cursor: pointer;
 
@@ -41,6 +51,14 @@
       display: inline;
       border-radius: 5px;
     }
+    
+    .copy-button {
+      position: absolute;
+      top: 45px;
+      right: 10px;
+      display: inline;
+      border-radius: 5px;
+    }  
 
     .like-button {
       display: inline;

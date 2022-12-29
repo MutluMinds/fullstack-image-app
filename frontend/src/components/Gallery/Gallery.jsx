@@ -36,12 +36,23 @@ const Gallery = ({ images, apiType }) => {
 
   const hasLike = (id) => favImages && favImages.find(favImg => favImg.id === id);
 
+  function uniqueArray(arr) {
+    const seenIds = new Set();
+    return arr.filter(obj => {
+      if (seenIds.has(obj.id)) {
+        return false;
+      }
+      seenIds.add(obj.id);
+      return true;
+    });
+  }
+
   return (
     <>
       {images && images.length ? (
         <>
           <div className="search_gallery">
-            {images
+            {uniqueArray(images)
               .filter((img) => img.src)
               .map(({ 
                 id, 

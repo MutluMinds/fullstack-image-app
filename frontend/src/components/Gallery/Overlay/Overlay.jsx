@@ -6,8 +6,8 @@ import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 import { faHeart  } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faFilledHeart } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import CopyButtonOverlay from 'react-bootstrap/Overlay';
-import Tooltip from 'react-bootstrap/Tooltip';
+import CopyButtonOverlay from "react-bootstrap/Overlay";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Overlay = ({
   liked,
@@ -25,9 +25,6 @@ const Overlay = ({
   const handleToolTip = () => {
     setShowToolTip(!showToolTip);
     onCopy();
-    setTimeout(() => {
-      setShowToolTip(false);
-    }, 2000);
   };
 
   return (
@@ -51,6 +48,7 @@ const Overlay = ({
         className="copy-button"
         ref={target}
         onClick={handleToolTip}
+        onMouseLeave={() => setShowToolTip(false)}
       >
         <FontAwesomeIcon icon={faLink} inverse />
       </button>

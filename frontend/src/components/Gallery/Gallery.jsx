@@ -34,6 +34,10 @@ const Gallery = ({ images, apiType }) => {
     setFavImages(favImages.filter(favImg => favImg.id !== id));
   };
 
+  const handleCopy = ({src}) => {
+    navigator.clipboard.writeText(src);  
+  };
+
   const hasLike = (id) => favImages && favImages.find(favImg => favImg.id === id);
 
   function uniqueArray(arr) {
@@ -66,6 +70,7 @@ const Gallery = ({ images, apiType }) => {
                   liked={hasLike(id)}
                   onLike={() => handleLike({ id, src, placeholderSrc })}
                   onExpand={() => handleShow({ src, title })}
+                  onCopy={() => handleCopy({src})}
                 />
               ))}
           </div>

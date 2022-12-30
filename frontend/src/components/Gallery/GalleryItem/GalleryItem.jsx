@@ -6,7 +6,7 @@ import Overlay from "../Overlay/Overlay";
 
 const TOUCH_DELAY = 250;
 
-const GalleryItem = ({ item, liked, onLike, onExpand }) => {
+const GalleryItem = ({ item, liked, onLike, onExpand, onCopy }) => {
   const onTouchStart = useMultipleTouch(touchCallback, TOUCH_DELAY);
 
   function touchCallback(touchAmount) {
@@ -40,6 +40,7 @@ const GalleryItem = ({ item, liked, onLike, onExpand }) => {
         liked={liked}
         onLike={onLike}
         onExpand={onExpand}
+        onCopy={onCopy}
       />
     </div>
   );

@@ -16,10 +16,18 @@ const Overlay = ({
   onCopy,
 }) => {
   const [showToolTip, setShowToolTip] = useState(false);
-  const target = useRef(null);
+  const target = useRef();
 
   const getLikeIcon = () => {
     return liked ? faFilledHeart : faHeart;
+  };
+
+  const handleToolTip = () => {
+    setShowToolTip(!showToolTip);
+    onCopy();
+    setTimeout(() => {
+      setShowToolTip(false);
+    }, 2000);
   };
 
   return (
@@ -39,24 +47,23 @@ const Overlay = ({
       >
         <FontAwesomeIcon icon={faExpandAlt} inverse/>
       </button>
-      <button 
+      <button
         className="copy-button"
         ref={target}
-        onClick={() => {
-          setShowToolTip(!showToolTip);
-          onCopy();
-          setTimeout(function(){setShowToolTip(false);},2000);
-        }}
+        onClick={handleToolTip}
       >
-        <FontAwesomeIcon icon={faLink} inverse/>
+        <FontAwesomeIcon icon={faLink} inverse />
       </button>
-        <CopyButtonOverlay target={target.current} show={showToolTip} placement="top" rootCloseEvent="mousedown">
-         {(props) => (
-           <Tooltip id="overlay-example" {...props}>
-             Copied to clipboard!
-           </Tooltip>
-         )}
-        </CopyButtonOverlay>
+      <CopyButtonOverlay
+        target={target.current}
+        show={showToolTip}
+        placement="top"
+        rootCloseEvent="mousedown"
+      >
+        <Tooltip id="overlay-toolTip">
+            Copied to clipboard!
+        </Tooltip>
+      </CopyButtonOverlay>
     </>
   );
 };

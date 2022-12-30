@@ -35,7 +35,7 @@ const Gallery = ({ images, apiType }) => {
   };
 
   const handleCopy = ({src}) => {
-    navigator.clipboard.writeText(src)  
+    navigator.clipboard.writeText(src);  
   };
 
   const hasLike = (id) => favImages && favImages.find(favImg => favImg.id === id);

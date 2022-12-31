@@ -10,7 +10,7 @@ const DEFAULT_PAGE = "/giphy";
 const Router = () => {
   return (<Routes>
     {APIS.map(({ apiType }) => 
-      <Route key={apiType} path={apiType} element={<GalleryPage />} />
+      <Route key={apiType} path={`/${apiType}`} element={<GalleryPage />} />
     )}
     <Route path="/" element={<Navigate to={DEFAULT_PAGE} replace />} />
     <Route path="*" element={<NotFound />} />

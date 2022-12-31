@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import { APIS } from "./static/constants";
+import React from "react";
 
 import Navbar from "./components/Navbar/Navbar";
 import Corner from "./components/Corner/Corner";
-import GalleryPage from "./pages/GalleryPage";
+import Router from "./router";
 
 function App() {
-  const [apiType, setImageType] = useState(APIS.giphy);
-
   return (
     <div className="App">
-      <Navbar onChange={(value) => setImageType(value)} value={apiType} />
+      <Navbar />
       <Corner />
-      <GalleryPage apiType={apiType} />
+      <Router />
     </div>
   );
 }

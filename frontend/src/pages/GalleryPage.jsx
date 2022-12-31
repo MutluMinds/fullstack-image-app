@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { getDefaultOffset, getImages } from "../utils";
 
 import StickyBar from "../components/StickyBar/StickyBar";
@@ -7,7 +8,8 @@ import Gallery from "../components/Gallery/Gallery";
 import LoadMoreButton from "../components/LoadMoreButton/LoadMoreButton";
 import Badge from "../components/Badge/Badge";
 
-const GalleryPage = ({ apiType }) => {
+const GalleryPage = () => {
+  const apiType = useLocation().pathname.substring(1);
   const [isLoading, setIsLoading] = useState(false);
   const [images, setImages] = useState([]);
   const [inputValue, setInputValue] = useState("");

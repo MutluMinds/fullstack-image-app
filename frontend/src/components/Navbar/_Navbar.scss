@@ -9,6 +9,10 @@
             outline: none;
         }
 
+        :hover {
+            color: $pink;
+        }
+
         &--active {
             width: 30px;
             height: 10px;

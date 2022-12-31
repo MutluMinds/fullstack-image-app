@@ -1,8 +1,6 @@
 import {
   LIMIT,
   APIS,
-  DEFAULT_GIPHY_OFFSET,
-  DEFAULT_PIXABAY_OFFSET,
 } from "../static/constants";
 
 export const getNewOffset = (apiType, prevOffset) => {
@@ -12,4 +10,4 @@ export const getNewOffset = (apiType, prevOffset) => {
 };
 
 export const getDefaultOffset = (apiType) =>
-  apiType === APIS.giphy ? DEFAULT_GIPHY_OFFSET : DEFAULT_PIXABAY_OFFSET;
+  APIS.find(api => apiType === api.apiType).defaultOffset;

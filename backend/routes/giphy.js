@@ -9,7 +9,8 @@ router.route("/").get(async (req, res) => {
     const dataWithSrc = data.map((img) => ({
       ...img,
       src: img?.images?.downsized?.url || "",
-      placeholderSrc: img?.images?.fixed_height_small_still?.url || ""
+      placeholderSrc: img?.images?.fixed_height_small_still?.url || "",
+      downloadable: `${img?.title}.gif` || ""
     }));
 
     res.json(dataWithSrc);

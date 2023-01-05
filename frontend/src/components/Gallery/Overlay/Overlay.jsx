@@ -6,6 +6,7 @@ import { faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 import { faHeart  } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faFilledHeart } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import CopyButtonOverlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
 
@@ -14,6 +15,7 @@ const Overlay = ({
   onLike, 
   onExpand,
   onCopy,
+  onDownload,
 }) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const target = useRef();
@@ -62,6 +64,12 @@ const Overlay = ({
             Copied to clipboard!
         </Tooltip>
       </CopyButtonOverlay>
+      <button
+        className="download-button"
+        onMouseDown={onDownload}
+      >
+        <FontAwesomeIcon icon={faFileDownload} size="lg" inverse/>
+      </button>
     </>
   );
 };

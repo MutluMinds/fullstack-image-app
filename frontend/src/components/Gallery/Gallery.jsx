@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import GalleryItem from "./GalleryItem/GalleryItem";
-import { saveAs } from 'file-saver'
-
-
+import { saveAs as onDownload} from "file-saver";
 
 const Gallery = ({ images, apiType }) => { 
   const [show, setShow] = useState(false);
@@ -39,10 +37,6 @@ const Gallery = ({ images, apiType }) => {
 
   const handleCopy = ({src}) => {
     navigator.clipboard.writeText(src);  
-  };
-
-  const handleDownload = ({ src, downloadable }) => {
-    saveAs(src, downloadable)
   };
 
   const hasLike = (id) => favImages && favImages.find(favImg => favImg.id === id);
@@ -79,7 +73,7 @@ const Gallery = ({ images, apiType }) => {
                   onLike={() => handleLike({ id, src, placeholderSrc })}
                   onExpand={() => handleShow({ src, title })}
                   onCopy={() => handleCopy({src})}
-                  onDownload={() => handleDownload({ src, downloadable })}
+                  onDownload={() => onDownload( src, downloadable )}
                 />
               ))}
           </div>

@@ -65,6 +65,15 @@
     Your frontend app is now running at `http://localhost:3000`!
     
     Your backend server is now running at `http://localhost:5000`!
+
+## Contributing
+We welcome contributions to our projects! If you are interested in contributing, please read our [contributing guidelines](https://github.com/MutluMinds/.github/blob/main/CONTRIBUTING.md) for more information on how to get started.
+
+## Code of Conduct
+We are committed to providing a friendly and welcoming environment for all of our projects. Please read and follow our [code of conduct](https://github.com/MutluMinds/.github/blob/main/CODE_OF_CONDUCT.md).
+
+## Join us
+Join [our ![Discord](https://img.shields.io/badge/Discord-7289DA.svg?logo=discord&logoColor=white) here.](https://discord.gg/G976TR8bBV).
     
 ## 🙏 Support
 

@@ -1,44 +1,31 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { APIS } from "../../static/constants";
 
-import {APIS} from "../../static/constants";
+const NAV_ITEMS = APIS.map(({ apiType, label }) => ({
+  label,
+  link: `/${apiType}`,
+  apiType
+}));
 
-
-const Navbar = ({ onChange, value }) => { 
-  const navItems = [
-    {
-      label: "GIPHY",
-      link: "/gifs",
-      apiType: APIS.giphy,
-    },
-    {
-      label: "PIXABAY",
-      link: "/images",
-      apiType: APIS.pixabay,
-    },
-    {
-      label: "UNSPLASH",
-      link: "/unsplashimages",
-      apiType: APIS.unsplash
-    }
-  ];
-  const handleClick = (navItem) => onChange(navItem.apiType);
-
+const Navbar = () => {
   return (
     <div>
       <nav>
         <ul>
-          {navItems.map((navItem) => {
+          {NAV_ITEMS.map((navItem) => {
             return (
               <li key={navItem.apiType} className="nav_item">
-                <button onClick={() => handleClick(navItem)}>
-                  <span className="nav_item--link" to={navItem.link}>
-                    {navItem.label}
-                  </span>
-                  <div
-                    className={
-                      navItem.apiType === value ? "nav_item--active" : null
-                    }
-                  />
+                <button>
+                  <NavLink
+                    className="nav_item--link"
+                    to={navItem.link}
+                  >
+                    {({ isActive }) => (<>
+                      {navItem.label}
+                      <div className={isActive ? "nav_item--active" : null} />
+                    </>)}
+                  </NavLink>
                 </button>
               </li>
             );

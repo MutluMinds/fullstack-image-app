@@ -5,7 +5,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import GalleryItem from "./GalleryItem/GalleryItem";
 import { saveAs as onDownload} from "file-saver";
 
-const Gallery = ({ images, apiType }) => { 
+const Gallery = ({ images, apiType }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
 

@@ -1,0 +1,18 @@
+.drop{
+    &_initial{
+        background: $darkGray;
+        border: 2px solid $lightGray;
+        border-right: none;
+        color: $white;
+        border-radius: 12px;
+        height: $stickyHeight;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    
+   &_menu{
+    background: $darkGray;
+    border: 2px solid $lightGray;
+    color: $white;
+   }
+}

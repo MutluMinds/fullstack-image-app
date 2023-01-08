@@ -1,24 +1,12 @@
 
 .sticky-wrapper {
-  display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   position: sticky;
-  top: 10px;
+  top: 20px;
   z-index: 1;
   align-items: center;
   gap: 12px;
 }
 
-@media (min-width: $screenSmall) {
-  .sticky-wrapper {
-    width: 80%;
-  }
-}
-
-@media (min-width: $screenLarge) {
-  .sticky-wrapper {
-    width: 40%;
-  }
-}

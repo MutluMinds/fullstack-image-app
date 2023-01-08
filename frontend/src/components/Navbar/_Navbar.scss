@@ -1,27 +1,20 @@
 .nav {
     &_item {
         list-style-type: none;
-        padding: 15px;
-        
+        font-size: 22px; 
+        padding: 0 12px;
         button {
             background-color: transparent;
             border: none;
             outline: none;
+            color: $pink;
+            font-size: 25px;
         }
 
         :hover {
             color: $pink;
         }
-
-        &--active {
-            width: 30px;
-            height: 10px;
-            background-color: $pink;
-            margin-top: 14px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
+        
         &--link {
             color: $white;
             font-weight: bold;
@@ -31,15 +24,21 @@
 }
 
 nav ul {
+    cursor: pointer;
     padding: 0;
-    display: flex;
-    justify-content: center;
+}
 
-    li {
-        font-size: 20px;
-    }
-
-    li > div {
-        cursor: pointer;
-    }
+.grid3{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-rows: 45px;
+    margin: 25px auto;
+    position: sticky;
+    top: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 50%;
+    // transform: translateX(-50%);
+    z-index: 1;
 }

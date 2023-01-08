@@ -2,10 +2,13 @@
 button.scroll-top-button {
   background: $darkGray;
   border: 2px solid $lightGray;
+  border-left: none;
   color: $white;
   width: $stickyTopButtonWidth;
   height: $stickyHeight;
   border-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   
   .scroll-top-button-wrapper {
     display: flex;

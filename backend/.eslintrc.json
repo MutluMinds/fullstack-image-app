@@ -15,7 +15,7 @@
             2,
             "always"
         ],
-        "linebreak-style": 1,
+        "linebreak-style": 0,
         "quotes": [
             "error",
             "double"

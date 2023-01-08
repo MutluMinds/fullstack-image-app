@@ -26,19 +26,21 @@
 nav ul {
     cursor: pointer;
     padding: 0;
+    text-align: center;
+}
+
+li:hover{
+    color: $pink;
+    cursor: pointer;
 }
 
 .grid3{
-    width: 60%;
+    max-width: 60%;
     display: grid;
-    grid-template-columns: 20% 70% 10%;
+    grid-template-columns: 25% 65% 10%;
     grid-template-rows: 45px;
     margin: 25px auto;
     position: sticky;
     top: 0;
-    // position: fixed;
-    // top: 0;
-    // left: 50%;
-    // transform: translateX(-50%);
     z-index: 1;
 }

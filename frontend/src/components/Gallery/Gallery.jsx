@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
 import Modal from "react-bootstrap/Modal";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import GalleryItem from "./GalleryItem/GalleryItem";
+import { saveAs as onDownload} from "file-saver";
 
 const Gallery = ({ images, apiType }) => {
   const [show, setShow] = useState(false);
@@ -62,7 +62,8 @@ const Gallery = ({ images, apiType }) => {
                 id, 
                 title, 
                 src, 
-                placeholderSrc 
+                placeholderSrc,
+                downloadable 
               }, idx) => (
                 <GalleryItem 
                   key={`${idx}-${id}`} 
@@ -71,6 +72,7 @@ const Gallery = ({ images, apiType }) => {
                   onLike={() => handleLike({ id, src, placeholderSrc })}
                   onExpand={() => handleShow({ src, title })}
                   onCopy={() => handleCopy({src})}
+                  onDownload={() => onDownload( src, downloadable )}
                 />
               ))}
           </div>

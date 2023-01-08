@@ -10,7 +10,8 @@ router.route("/").get(async (req, res) => {
     const dataWithSrc = hits.map((img) => ({
       ...img,
       src: img?.webformatURL || img?.largeImageURL || "",
-      placeholderSrc: img?.previewURL || ""
+      placeholderSrc: img?.previewURL || "",
+      downloadable: `${img?.tags.split(",")[0]}.jpg` || ""
     }));
 
     res.json(dataWithSrc);

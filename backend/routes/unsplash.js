@@ -10,7 +10,8 @@ router.route("/").get(async (req, res) => {
     const dataWithSrc = data.map((img) => ({
       ...img,
       src: img.urls.regular,
-      placeholderSrc: blurhash.decode(img.blur_hash)
+      placeholderSrc: blurhash.decode(img.blur_hash),
+      downloadable: `${img?.alt_description}.jpg` || ""
     }));
     res.json(dataWithSrc);
   } catch (error) {

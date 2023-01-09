@@ -1,17 +1,16 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Corner from "./components/Corner/Corner";
 import Router from "./router";
 
 function App() {
-  const [searchValue, setSearchValue] = useState("");
-
+  const [inputValue, setInputValue] = useState("");
+  
   return (
     <div className="App">
-      <Navbar setInputValue={setSearchValue}/>
+      <Navbar setInputValue={setInputValue}/>
       <Corner />
-      <Router searchWord={searchValue} setSearchWord={setSearchValue}/>
+      <Router inputValue={inputValue} setInputValue={setInputValue}/>
     </div>
   );
 }

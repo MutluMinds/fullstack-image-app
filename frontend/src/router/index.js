@@ -7,7 +7,7 @@ import NotFound from "../pages/NotFound";
 
 const DEFAULT_PAGE = "/giphy";
 
-const Router = ({ searchWord, setSearchWord }) => {
+const Router = ({ inputValue, setInputValue }) => {
   return (
     <Routes>
       {APIS.map(({ apiType }) => (
@@ -16,8 +16,8 @@ const Router = ({ searchWord, setSearchWord }) => {
           path={`/${apiType}`}
           element={
             <GalleryPage
-              inputValue={searchWord}
-              setInputValue={setSearchWord}
+              inputValue={inputValue}
+              setInputValue={setInputValue}
             />
           }
         />

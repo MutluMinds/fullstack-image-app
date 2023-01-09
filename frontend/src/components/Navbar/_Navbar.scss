@@ -1,8 +1,9 @@
 .nav {
     &_item {
         list-style-type: none;
-        font-size: 22px; 
-        padding: 0 12px;
+        font-size: 20px; 
+        padding: 0 10px;
+        
         button {
             background-color: transparent;
             border: none;
@@ -27,15 +28,16 @@ nav ul {
     cursor: pointer;
     padding: 0;
     text-align: center;
+    margin-top: 16px;
 }
 
-li:hover{
+li:hover {
     color: $pink;
     cursor: pointer;
 }
 
-.grid3{
-    max-width: 60%;
+.navbar {
+    max-width: 60vw;
     display: grid;
     grid-template-columns: 25% 65% 10%;
     grid-template-rows: 45px;
@@ -43,4 +45,34 @@ li:hover{
     position: sticky;
     top: 0;
     z-index: 1;
+}
+
+@media (max-width: $screenMedium) {
+    .navbar {
+        max-width: 70vw;
+        grid-template-columns: 30% 60% 10%;
+    }
+
+    .nav_item {
+        font-size: 16px;
+        padding: 0;
+        button {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width: $screenSmall) {
+    .navbar{
+        grid-template-columns: 35% 55% 10% ;
+        max-width: 95vw;
+        margin-top: 60px;
+    }
+
+    .nav_item{
+        font-size: 15px;
+        button{
+            font-size: 20px;
+        }
+    }
 }

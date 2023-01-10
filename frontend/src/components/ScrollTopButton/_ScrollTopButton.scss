@@ -2,10 +2,12 @@
 button.scroll-top-button {
   background: $darkGray;
   border: 2px solid $lightGray;
+  border-left: none;
   color: $white;
-  width: $stickyTopButtonWidth;
   height: $stickyHeight;
   border-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   
   .scroll-top-button-wrapper {
     display: flex;
@@ -24,5 +26,26 @@ button.scroll-top-button {
       font-size: 32px;
       margin-top: -4px;
     }
+  }
+}
+
+@media (max-width:$screenMedium) {
+  button.scroll-top-button {
+    height: 45px;
+  }
+}
+
+@media (max-width:$screenSmall) {
+  button.scroll-top-button {
+    height: 40px;
+  }
+
+  button.scroll-top-button .scroll-top-button-wrapper svg {
+   font-size: 18px;
+  }
+
+  button.scroll-top-button .scroll-top-button-wrapper .above-line {
+    width: 16px;
+    height: 4px;
   }
 }

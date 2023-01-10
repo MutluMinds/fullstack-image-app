@@ -1,38 +1,39 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, {useState }  from "react";
+
 import { APIS } from "../../static/constants";
+import ScrollButton from "../ScrollTopButton/ScrollTopButton";
+import StickyBar from "../StickyBar/StickyBar";
+import Dropdown from "../Dropdown/Dropdown";
 
-const NAV_ITEMS = APIS.map(({ apiType, label }) => ({
-  label,
-  link: `/${apiType}`,
-  apiType
-}));
+import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({setInputValue}) => {
+  const [dropDownShown, setDropDownShown] = useState(false);
+  const handleClick = () => setDropDownShown(!dropDownShown);
+  const path = useLocation().pathname.substring(1).toUpperCase();
+
+ const apiArray = APIS.map((api)=>api.label);
   return (
-    <div>
-      <nav>
-        <ul>
-          {NAV_ITEMS.map((navItem) => {
-            return (
-              <li key={navItem.apiType} className="nav_item">
-                <button>
-                  <NavLink
-                    className="nav_item--link"
-                    to={navItem.link}
-                  >
-                    {({ isActive }) => (<>
-                      {navItem.label}
-                      <div className={isActive ? "nav_item--active" : null} />
-                    </>)}
-                  </NavLink>
-                </button>
-              </li>
-            );
-          })}
+    <nav className="navbar">
+        <ul onClick={handleClick} className="drop_initial">
+          <li className="nav_item">
+            {apiArray.indexOf(path) !== -1 ? path : "IMAGES"}
+            <button className="nav-icon">
+              <FontAwesomeIcon icon={faAngleDown} />
+            </button>
+          </li>
+          {dropDownShown ? (
+            <Dropdown
+              onChange={(dropDownShown)=>setDropDownShown(!dropDownShown)}
+              currentValue={path}
+            />
+          ) : null}
         </ul>
-      </nav>
-    </div>
+      <StickyBar onSearch={searchTerm => setInputValue(searchTerm)} />
+      <ScrollButton /> 
+    </nav>
   );
 };
 

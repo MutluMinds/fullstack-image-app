@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Modal from "react-bootstrap/Modal";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import GalleryItem from "./GalleryItem/GalleryItem";

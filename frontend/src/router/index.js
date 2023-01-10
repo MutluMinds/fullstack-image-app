@@ -7,14 +7,25 @@ import NotFound from "../pages/NotFound";
 
 const DEFAULT_PAGE = "/giphy";
 
-const Router = () => {
-  return (<Routes>
-    {APIS.map(({ apiType }) => 
-      <Route key={apiType} path={`/${apiType}`} element={<GalleryPage />} />
-    )}
-    <Route path="/" element={<Navigate to={DEFAULT_PAGE} replace />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes>);
+const Router = ({ inputValue, setInputValue }) => {
+  return (
+    <Routes>
+      {APIS.map(({ apiType }) => (
+        <Route
+          key={apiType}
+          path={`/${apiType}`}
+          element={
+            <GalleryPage
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+            />
+          }
+        />
+      ))}
+      <Route path="/" element={<Navigate to={DEFAULT_PAGE} replace />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 };
 
 export default Router;

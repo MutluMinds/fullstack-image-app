@@ -1,13 +1,15 @@
 
 button.scroll-top-button {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+
   background: $darkGray;
   border: 2px solid $lightGray;
-  border-left: none;
   color: $white;
   height: $stickyHeight;
+  width: $stickyWidth;
   border-radius: 12px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   
   .scroll-top-button-wrapper {
     display: flex;
@@ -29,17 +31,8 @@ button.scroll-top-button {
   }
 }
 
-@media (max-width:$screenMedium) {
-  button.scroll-top-button {
-    height: 45px;
-  }
-}
 
 @media (max-width:$screenSmall) {
-  button.scroll-top-button {
-    height: 40px;
-  }
-
   button.scroll-top-button .scroll-top-button-wrapper svg {
    font-size: 18px;
   }

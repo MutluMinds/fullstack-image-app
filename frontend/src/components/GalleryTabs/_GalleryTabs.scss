@@ -1,0 +1,32 @@
+ul.gallery-tabs {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  
+  .gallery-tab {
+    list-style-type: none;
+    padding: 15px;
+    
+    button {
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+
+    :hover {
+      color: $pink;
+    }
+
+    .gallery-tab--active {
+      width: 30px;
+      height: 10px;
+      background-color: $pink;
+      margin-top: 14px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

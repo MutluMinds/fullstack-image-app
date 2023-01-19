@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
+import React from "react";
+import ApiSelector from "./components/ApiSelector/ApiSelector";
 import Corner from "./components/Corner/Corner";
 import Router from "./router";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  
   return (
     <div className="App">
-      <Navbar setInputValue={setInputValue}/>
+      <ApiSelector />
       <Corner />
-      <Router inputValue={inputValue} setInputValue={setInputValue}/>
+      <Router />
     </div>
   );
 }

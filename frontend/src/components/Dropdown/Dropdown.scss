@@ -2,31 +2,18 @@
     &_initial {
         background: $darkGray;
         border: 2px solid $lightGray;
-        border-right: none;
         color: $white;
         border-radius: 12px;
         height: $stickyHeight;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
     }
     
     &_menu {
+        margin-top: 18px;
+        z-index: 2;
+        position: relative;
         background: $darkGray;
         border: 2px solid $lightGray;
+        border-radius: 12px;
         color: $white;
-    }
-}
-
-
-@media (max-width: $screenMedium) {
-    .drop_initial{
-        height: 45px;
-    }
-}
-
-
-@media (max-width: $screenSmall) {
-    .drop_initial{
-        height: 40px;
     }
 }

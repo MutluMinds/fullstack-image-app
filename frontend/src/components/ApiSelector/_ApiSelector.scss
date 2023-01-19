@@ -1,0 +1,45 @@
+.api-selector {
+  padding: 15px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  position: absolute;
+
+  ul {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 150px;
+  }
+
+  .drop_item {
+    list-style-type: none;
+    font-size: 20px;
+
+    .drop-icon {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: $pink;
+      font-size: 25px;
+      margin-left: 10px;
+    }
+
+    &:hover {
+      color: $pink;
+    }
+
+    .drop_item--link {
+      color: $white;
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      padding: 8px 10px;
+    }
+
+    .drop_item--link:hover {
+      color: $pink;
+    }
+  }
+}

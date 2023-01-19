@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from "react";
+import noImg from "../../assets/images/no_image.jpg";
 
 const LazyImg = ({ placeholderSrc, src, ...props }) => {
+  const [blurred, setBlurred] = useState(true);
   const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      setImgSrc(src);
-    };
-
-    return () => {
-      img.src = null;
-      img.onload = null;
-    };
+    fetch(src)
+      .then(res => {
+        setImgSrc(res.ok ? src : noImg);
+      })
+      .catch(() => {
+        setImgSrc(noImg);
+      });
   }, [src]);
-
-  const customClass =
-    placeholderSrc && imgSrc === placeholderSrc ? "lazy-loading" : "lazy-loaded";
 
   return (
     <img
-      className={`image ${customClass}`}
+      className={`image ${blurred ? "lazy-loading" : "lazy-loaded"}`}
       loading="lazy"
       {...{ src: imgSrc, ...props }}
       alt={props.alt || ""}
+      onLoad={() => setBlurred(false)}
     />
   );
 };

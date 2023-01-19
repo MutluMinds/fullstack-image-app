@@ -4,7 +4,7 @@ import {
 } from "../static/constants";
 
 export const getNewOffset = (apiType, prevOffset) => {
-  return apiType === APIS.giphy
+  return apiType === APIS[0].apiType
     ? prevOffset + LIMIT + 1
     : prevOffset + 1;
 };

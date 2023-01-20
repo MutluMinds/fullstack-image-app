@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { LIMIT } from "../static/constants";
 import { useLocation } from "react-router-dom";
 import { getDefaultOffset, getImages } from "../utils";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 import Loading from "../components/Loading/Loading";
 import Gallery from "../components/Gallery/Gallery";
 import LoadMoreButton from "../components/LoadMoreButton/LoadMoreButton";
@@ -16,6 +18,11 @@ const GalleryPage = () => {
   const [images, setImages] = useState([]);
   const [activeTab, setActiveTab] = useState(GALLERY_TABS.gallery.id);
   const [inputValue, setInputValue] = useState("");
+
+  const { 
+    storage: favImages,
+    setStorage: setFavImages 
+  }  = useLocalStorage(apiType, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,7 +42,7 @@ const GalleryPage = () => {
     };
   }, []);
 
-  function handleTabClick(id, storage) {
+  function handleTabClick(id) {
     setActiveTab(id);
 
     if (id === GALLERY_TABS.gallery.id) {
@@ -50,7 +57,7 @@ const GalleryPage = () => {
     }
 
     if (id === GALLERY_TABS.favourites.id) {
-      setImages(storage.slice(0, LIMIT));
+      setImages(favImages.slice(0, LIMIT));
     }
   }
 
@@ -67,7 +74,12 @@ const GalleryPage = () => {
               : null
           }
           <GalleryInfo inputValue={inputValue} setInputValue={setInputValue} activeTab={activeTab} />
-          <Gallery images={images} apiType={apiType} />
+          <Gallery 
+            activeTab={activeTab}
+            images={images} 
+            favImages={favImages} 
+            setFavImages={setFavImages} 
+          />
           {images.length >= LIMIT ? <LoadMoreButton
             apiType={apiType}
             inputValue={inputValue}

@@ -1,17 +1,29 @@
-import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import GalleryItem from "./GalleryItem/GalleryItem";
+import React, { useEffect, useState } from "react";
+import { GALLERY_TABS } from "../GalleryTabs/GalleryTabs";
 import { saveAs as onDownload} from "file-saver";
 
-const Gallery = ({ images, apiType }) => {
+import Modal from "react-bootstrap/Modal";
+import GalleryItem from "./GalleryItem/GalleryItem";
+
+const Gallery = ({ activeTab, images, favImages, setFavImages }) => {
   const [show, setShow] = useState(false);
   const [imageOnModal, setImageOnModal] = useState();
+  const [displayedImages, setDisplayedImages] = useState([]);
 
-  const { 
-    storage: favImages,
-    setStorage: setFavImages 
-  }  = useLocalStorage(apiType, []);
+  useEffect(() => {
+    switch (activeTab) {
+    case GALLERY_TABS.gallery.id:
+      setDisplayedImages(images);
+      break;
+    case GALLERY_TABS.favourites.id:
+      setDisplayedImages(favImages);
+      break;
+    default:
+      setDisplayedImages([]);
+      break;
+    }
+
+  }, [activeTab, favImages, images]);
 
   const handleClose = () => setShow(false);
 
@@ -51,12 +63,23 @@ const Gallery = ({ images, apiType }) => {
     });
   }
 
+  function modifiedArray(arr) {
+    const copyArr = [...arr];
+    const modifiedArr = uniqueArray(copyArr);
+
+    if (activeTab === GALLERY_TABS.favourites.id) {
+      modifiedArr.reverse();
+    }
+
+    return modifiedArr;
+  }
+
   return (
     <>
-      {images && images.length ? (
+      {displayedImages && displayedImages.length ? (
         <>
           <div className="search_gallery">
-            {uniqueArray(images)
+            {modifiedArray(displayedImages)
               .filter((img) => img.src)
               .map(({ 
                 id, 

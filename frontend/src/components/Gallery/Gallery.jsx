@@ -22,7 +22,6 @@ const Gallery = ({ activeTab, images, favImages, setFavImages }) => {
       setDisplayedImages([]);
       break;
     }
-
   }, [activeTab, favImages, images]);
 
   const handleClose = () => setShow(false);

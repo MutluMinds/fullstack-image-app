@@ -57,7 +57,7 @@ const GalleryPage = () => {
     }
 
     if (id === GALLERY_TABS.favourites.id) {
-      setImages(favImages.slice(0, LIMIT));
+      setImages(favImages?.length ? favImages.slice(0, LIMIT) : []);
     }
   }
 

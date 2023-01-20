@@ -6,13 +6,18 @@ const LazyImg = ({ placeholderSrc, src, ...props }) => {
   const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
 
   useEffect(() => {
-    fetch(src)
+    const ac = new AbortController();
+
+    fetch(src, { signal: ac.signal })
       .then(res => {
         setImgSrc(res.ok ? src : noImg);
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.name === "AbortError") return;
         setImgSrc(noImg);
       });
+
+    return () => ac.abort();
   }, [src]);
 
   return (

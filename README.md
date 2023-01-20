@@ -77,4 +77,4 @@ Join [our ![Discord](https://img.shields.io/badge/Discord-7289DA.svg?logo=discor
     
 ## 🙏 Support
 
-Don't forget to leave a star ⭐️
+Don't forget to leave a star! ⭐️

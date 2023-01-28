@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 export const GALLERY_TABS = {
   gallery: {
@@ -15,12 +13,10 @@ export const GALLERY_TABS = {
 
 const GalleryTabs = ({ onTabClick }) => {
   const [activeTab, setActiveTab] = useState(GALLERY_TABS.gallery.id);
-  const apiType = useLocation().pathname.substring(1);
-  const { storage } = useLocalStorage(apiType, []);
 
   function handleTabClick(id) {
     setActiveTab(id);
-    onTabClick(id, storage);
+    onTabClick(id);
   }
 
   return (<>

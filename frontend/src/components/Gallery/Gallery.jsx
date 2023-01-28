@@ -32,12 +32,17 @@ const Gallery = ({ activeTab, images, favImages, setFavImages }) => {
   };
 
   const handleLike = ({ id, src, placeholderSrc }) => {
-    if (!favImages.find(favImg => favImg.id === id)) {
-      setFavImages(prevImages => [...prevImages, {
-        id,
-        src,
-        placeholderSrc
-      }]);
+
+    if (!favImages || !favImages.find(favImg => favImg.id === id)) {
+      setFavImages(prevImages => {
+        const newImage = {
+          id,
+          src,
+          placeholderSrc
+        };
+
+        return prevImages ? [...prevImages, newImage] : [newImage];
+      });
 
       return;
     }

@@ -24,7 +24,7 @@ const useLocalStorage = (key, initialStorage) => {
   }, [storage]);
 
   return {
-    storage,
+    storage: storage || initialStorage,
     setStorage
   };
 };

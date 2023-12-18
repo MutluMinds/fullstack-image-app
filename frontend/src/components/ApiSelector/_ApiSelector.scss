@@ -1,9 +1,9 @@
 .api-selector {
-  padding: 15px;
   background-color: transparent;
   outline: none;
   border: none;
   position: absolute;
+  padding: 15px;
 
   ul {
     cursor: pointer;
@@ -16,6 +16,7 @@
   .drop_item {
     list-style-type: none;
     font-size: 20px;
+    margin-top: 5px;
 
     .drop-icon {
       background-color: transparent;
@@ -24,6 +25,9 @@
       color: $pink;
       font-size: 25px;
       margin-left: 10px;
+      margin-top: 2px;
+      vertical-align: middle;
+      display: inline-block;
     }
 
     &:hover {
@@ -41,5 +45,9 @@
     .drop_item--link:hover {
       color: $pink;
     }
+  }
+  @media only screen and (max-width: 580px) {
+    position: relative;
+
   }
 }

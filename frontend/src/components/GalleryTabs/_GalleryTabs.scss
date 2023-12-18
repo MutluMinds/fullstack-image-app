@@ -29,4 +29,8 @@ ul.gallery-tabs {
       margin-right: auto;
     }
   }
+  @media only screen and (max-width: 580px) {
+    justify-content: left;
+
+  }
 }

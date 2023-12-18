@@ -1,8 +1,8 @@
 import { LIMIT } from "../static/constants";
 
-const axios = require("axios");
+import axios from "axios";
 const hostName = `${
-  process?.env?.REACT_APP_API_URL || "http://localhost:5000"
+  import.meta?.env?.VITE_APP_API_URL || "http://localhost:5000"
 }`;
 
 const fetchImages = async (apiType, limit, offset) => {

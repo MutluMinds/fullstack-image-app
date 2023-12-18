@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export const GALLERY_TABS = {
   gallery: {
@@ -11,18 +11,12 @@ export const GALLERY_TABS = {
   }
 };
 
-const GalleryTabs = ({ onTabClick }) => {
-  const [activeTab, setActiveTab] = useState(GALLERY_TABS.gallery.id);
-
-  function handleTabClick(id) {
-    setActiveTab(id);
-    onTabClick(id);
-  }
+const GalleryTabs = ({ onTabClick, activeTab }) => {
 
   return (<>
     <ul className="gallery-tabs">
       {Object.values(GALLERY_TABS).map((tab, index) => (<li key={index} className="gallery-tab">
-        <button onClick={() => handleTabClick(tab.id)}>
+        <button onClick={() => onTabClick(tab.id)}>
           {tab.label}
           <div className={activeTab === tab.id ? "gallery-tab--active" : null} />
         </button>

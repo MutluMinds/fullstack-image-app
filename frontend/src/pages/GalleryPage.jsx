@@ -19,10 +19,10 @@ const GalleryPage = () => {
   const [activeTab, setActiveTab] = useState(GALLERY_TABS.gallery.id);
   const [inputValue, setInputValue] = useState("");
 
-  const { 
+  const {
     storage: favImages,
-    setStorage: setFavImages 
-  }  = useLocalStorage(apiType, []);
+    setStorage: setFavImages
+  } = useLocalStorage(apiType, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -63,31 +63,30 @@ const GalleryPage = () => {
 
   return (
     <div className="page">
+      <GalleryTabs onTabClick={handleTabClick} activeTab={activeTab} />
       {isLoading ? (
         <Loading />
-      ) : (
-        <>
-          <GalleryTabs onTabClick={(id, storage) => handleTabClick(id, storage)} />
-          {
-            activeTab === GALLERY_TABS.gallery.id 
-              ? <SearchImage onSearch={searchTerm => setInputValue(searchTerm)} />
-              : null
-          }
-          <GalleryInfo inputValue={inputValue} setInputValue={setInputValue} activeTab={activeTab} />
-          <Gallery 
-            activeTab={activeTab}
-            images={images} 
-            favImages={favImages} 
-            setFavImages={setFavImages} 
-          />
-          {images.length >= LIMIT ? <LoadMoreButton
-            apiType={apiType}
-            inputValue={inputValue}
-            activeTab={activeTab}
-            afterLoad={(newImages) => setImages(images => [...images, ...newImages])}
-          /> : null}
-          <ScrollButton />
-        </>
+      ) : (<>
+        {
+          activeTab === GALLERY_TABS.gallery.id
+            ? <SearchImage onSearch={searchTerm => setInputValue(searchTerm)} />
+            : null
+        }
+        <GalleryInfo inputValue={inputValue} setInputValue={setInputValue} activeTab={activeTab} />
+        <Gallery
+          activeTab={activeTab}
+          images={images}
+          favImages={favImages}
+          setFavImages={setFavImages}
+        />
+        {images.length >= LIMIT ? <LoadMoreButton
+          apiType={apiType}
+          inputValue={inputValue}
+          activeTab={activeTab}
+          afterLoad={(newImages) => setImages(images => [...images, ...newImages])}
+        /> : null}
+        <ScrollButton />
+      </>
       )}
     </div>
   );

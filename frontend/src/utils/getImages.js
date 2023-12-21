@@ -1,12 +1,12 @@
 import { LIMIT } from "../static/constants";
+import Axios from "axios";
 
-const axios = require("axios");
 const hostName = `${
-  process?.env?.REACT_APP_API_URL || "http://localhost:5000"
+  import.meta.env?.REACT_APP_API_URL || "http://localhost:5000"
 }`;
 
 const fetchImages = async (apiType, limit, offset) => {
-  const { data } = await axios.get(
+  const { data } = await Axios.get(
     `${hostName}/${apiType}?limit=${limit}&offset=${offset}`
   );
 
@@ -19,7 +19,7 @@ const fetchSearchedImages = async (
   limit,
   offset
 ) => {
-  const { data } = await axios.get(
+  const { data } = await Axios.get(
     `${hostName}/${apiType}/search?searchTerm=${searchTerm}&limit=${limit}&offset=${offset}`
   );
 
